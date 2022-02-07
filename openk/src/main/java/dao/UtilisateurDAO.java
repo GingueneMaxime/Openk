@@ -10,7 +10,7 @@ import java.util.List;
 import openk.Utilisateur;
 
 
-public class ProjetDAO extends DAO<Utilisateur> {
+public class UtilisateurDAO extends DAO<Utilisateur> {
 
 	private static final String TABLE = "Utilisateur";
 	private static final String CLE_PRIMAIRE = "num_utilisateur";
@@ -20,14 +20,14 @@ public class ProjetDAO extends DAO<Utilisateur> {
 	private static final String MAIL = "mail";
 	private static final String TEL = "tel";
 
-	private static ProjetDAO instance=null;
-	public static ProjetDAO getInstance(){
+	private static UtilisateurDAO instance=null;
+	public static UtilisateurDAO getInstance(){
 		if (instance==null){
-			instance = new ProjetDAO();
+			instance = new UtilisateurDAO();
 		}
 		return instance;
 	}
-	private ProjetDAO() {
+	private UtilisateurDAO() {
 		super();
 	}
 	@Override
@@ -115,7 +115,7 @@ public class ProjetDAO extends DAO<Utilisateur> {
 			ResultSet res = Connexion.executeQuery(requete) ;
 			while(res.next()){
 				int id = res.getInt(1);
-				utilisateur = ProjetDAO.getInstance().read(id);
+				utilisateur = UtilisateurDAO.getInstance().read(id);
 				rep.add(utilisateur);
 			}
 		}
