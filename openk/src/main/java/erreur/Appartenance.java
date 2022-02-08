@@ -1,4 +1,4 @@
-package openk;
+package erreur;
 
 public class Appartenance {
 	private int num_eleve;
