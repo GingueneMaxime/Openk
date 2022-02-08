@@ -1,30 +1,22 @@
 package ihm.bd;
 
+import java.io.IOException;
+import java.util.List;
+
 import dao.Connexion;
 import dao.UtilisateurDAO;
-import ihm.bd.openkControl;
-import openk.Utilisateur;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.util.List;
+import openk.Utilisateur;
 
 public class UtilisateurGUI extends Application {
 
-	@Override
-	public void start(Stage arg0) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
 
 	private static int compteur=0;
 	private final int numero;
@@ -38,7 +30,7 @@ public class UtilisateurGUI extends Application {
     
     public UtilisateurGUI() {
     	super();
-    	this.utilisateurData = getutilisateurData();
+    	this.utilisateurData = getUtilisateurDataUtilisateur();
     	this.numero=compteur++;
 		System.out.println("cponstructeur " + this.numero);
     }
@@ -75,11 +67,11 @@ public class UtilisateurGUI extends Application {
             
             // Ici, nous laissons la vue déclarer sa propre instance de contrôleur,
             // unique, déclarée une seule fois : maintenant
-            AnchorPane lesUtilisateur = (AnchorPane) loader.load();
+            AnchorPane lesUtilisateurs = (AnchorPane) loader.load();
             
             
             // Place cette sous-fenêtre au milieu de la fenêtre principale
-            structureRacineDeLaFenetre.setCenter(lesUtilisateur);
+            structureRacineDeLaFenetre.setCenter(lesUtilisateurs);
                         
             // récupère le contrôleur de la sous-fenêtre 
             this.sousControleur = loader.getController();
@@ -106,4 +98,9 @@ public class UtilisateurGUI extends Application {
         launch(args);
         Connexion.fermer();
     }
+	@Override
+	public void start(Stage arg0) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 }
