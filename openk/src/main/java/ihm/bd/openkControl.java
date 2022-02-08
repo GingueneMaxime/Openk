@@ -2,16 +2,13 @@ package ihm.bd;
 
 
 
-import openk.Utilisateur;
-import ihm.bd.UtilisateurGUI;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
-import openk.Projet;
+import openk.Utilisateur;
 
 public class openkControl {
 

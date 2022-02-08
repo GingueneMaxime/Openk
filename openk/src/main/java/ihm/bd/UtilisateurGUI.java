@@ -1,22 +1,19 @@
 package ihm.bd;
 
+import java.io.IOException;
+import java.util.List;
+
 import dao.Connexion;
 import dao.UtilisateurDAO;
-import ihm.bd.openkControl;
-import openk.Utilisateur;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.util.List;
+import openk.Utilisateur;
 
 public class UtilisateurGUI extends Application {
 
