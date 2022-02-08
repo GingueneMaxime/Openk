@@ -99,8 +99,9 @@ public class UtilisateurGUI extends Application {
         Connexion.fermer();
     }
 	@Override
-	public void start(Stage arg0) throws Exception {
-		// TODO Auto-generated method stub
-		
+	public void start(Stage premierescene) throws Exception {
+		this.fenetrePrincipale = premierescene;
+		this.fenetrePrincipale.setTitle("Utilisateur");
+		initStructureRacineDeLaFenetre();
 	}
 }
