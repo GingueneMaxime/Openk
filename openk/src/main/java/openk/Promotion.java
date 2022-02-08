@@ -8,7 +8,14 @@ public class Promotion {
 	private int num_formation;
 	private LocalDateTime date_debut;
 	private LocalDateTime date_fin;
-
+	
+	public Promotion(int num_promotion, int num_formation, LocalDateTime date_debut, LocalDateTime date_fin) {
+		super();
+		this.num_promotion = num_promotion;
+		this.num_formation = num_formation;
+		this.date_debut = date_debut;
+		this.date_fin = date_fin;
+	}
 	public int getNum_promotion() {
 		return num_promotion;
 	}
