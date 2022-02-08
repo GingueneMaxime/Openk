@@ -32,6 +32,7 @@ public class Batiment {
 	public String toString() {
 		return "Batiment [num_batiment=" + num_batiment + ", nom=" + nom + ", adresse=" + adresse + "]";
 	}
+
 	
 	
 	
