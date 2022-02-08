@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: A2E9F7;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView layoutX="400.0" prefHeight="361.0" prefWidth="200.0">
+        <columns>
+          <TableColumn prefWidth="98.0" text="Matière" />
+          <TableColumn prefWidth="100.0" text="Notes" />
+        </columns>
+      </TableView>
+      <Label layoutX="14.0" layoutY="14.0" text="Dernière note" />
+      <DatePicker layoutY="169.0" />
+      <Label layoutX="42.0" layoutY="148.0" text="Note du:" />
+   </children>
+</AnchorPane>

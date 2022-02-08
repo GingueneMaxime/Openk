@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: Red;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ihm.bd.AvionIhmControl">
+   <children>
+      <SplitPane prefHeight="236.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #A2E9F7;">
+               <children>
+                  <Label fx:id="texteTest" prefHeight="33.0" prefWidth="237.0" text="   Formulaire d'inscription" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <GridPane layoutX="-58.0" layoutY="144.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Nom" />
+                        <Label text="Prénom" GridPane.rowIndex="1" />
+                        <Label text="Adresse-mail" GridPane.rowIndex="2" />
+                        <Label text="Numéro téléphone" GridPane.rowIndex="3" />
+                        <TextField GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="2.5" top="2.5" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="2.5" top="2.5" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets bottom="2.5" top="2.5" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets bottom="2.5" top="2.5" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Label text="Civilité" GridPane.rowIndex="4" />
+                        <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
+                  <Button layoutX="192.0" layoutY="249.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Inscription" />
+                  <CheckBox layoutX="86.0" layoutY="213.0" mnemonicParsing="false" text="J'ai lu et j'accepte les conditions générale" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
