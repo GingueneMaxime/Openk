@@ -3,7 +3,7 @@ package ihm.bd;
 
 
 import openk.Utilisateur;
-import ihm.bd.ControlGUI;
+import ihm.bd.UtilisateurGUI;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,7 +44,7 @@ public class openkControl {
 	private Label tel;
 
 	// Les références croisées vers l'application principale
-	private ControlGUI mainApp;
+	private UtilisateurGUI mainApp;
 
 	// La ligne sélectionnée dans la liste (par défaut la première)
 	private int ligneActive=0;
@@ -74,7 +74,7 @@ public class openkControl {
 	 * au sous-contrôleur
 	 * @param mainApp : l'application principale 
 	 */
-	public void setMainApp(ControlGUI mainApp) {
+	public void setMainApp(UtilisateurGUI mainApp) {
 		//System.out.println("setMainApp called");
 		this.mainApp = mainApp;
 		utilisateurTable.setItems(this.mainApp.getutilisateurData());

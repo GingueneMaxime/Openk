@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
-public class ControlGUI extends Application {
+public class UtilisateurGUI extends Application {
 
 	@Override
 	public void start(Stage arg0) throws Exception {
@@ -36,7 +36,7 @@ public class ControlGUI extends Application {
     
     private openkControl sousControleur=null;
     
-    public ControlGUI() {
+    public UtilisateurGUI() {
     	super();
     	this.utilisateurData = getutilisateurData();
     	this.numero=compteur++;
@@ -71,7 +71,7 @@ public class ControlGUI extends Application {
         try {
             // On associe à l'autre vue de la liste d'avions
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(ControlGUI.class.getResource("./bd/Utilisateur.fxml"));
+            loader.setLocation(UtilisateurGUI.class.getResource("./bd/Utilisateur.fxml"));
             
             // Ici, nous laissons la vue déclarer sa propre instance de contrôleur,
             // unique, déclarée une seule fois : maintenant
@@ -85,7 +85,7 @@ public class ControlGUI extends Application {
             this.sousControleur = loader.getController();
             this.sousControleur.setMainApp(this);
             
-    		System.out.println(this.numero+" -> fin de montrer les avions / "+this.sousControleur);
+    		System.out.println(this.numero+" -> fin de montrer les utilisateur / "+this.sousControleur);
             
         } catch (IOException e) {
             e.printStackTrace();
@@ -94,9 +94,9 @@ public class ControlGUI extends Application {
     public Stage getFenetrePrincipale() {
 		return fenetrePrincipale;
 	}
-    public ObservableList<Utilisateur> getAvionDataAvion() {
+    public ObservableList<Utilisateur> getUtilisateurDataUtilisateur() {
 		utilisateurData = FXCollections.observableArrayList();
-		List<Utilisateur> lesAvions = UtilisateurDAO.getInstance().readTable();
+		List<Utilisateur> lesUtilisateurs = UtilisateurDAO.getInstance().readTable();
 		for (Utilisateur utilisateur : lesUtilisateurs) {
 			utilisateurData.add(utilisateur);
 		}
