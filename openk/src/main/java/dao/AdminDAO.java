@@ -94,7 +94,7 @@ public class AdminDAO extends DAO<Admin> {
 		return admin;
 
 	}
-	public void afficheSelectEtoileUtilisateur() {
+	public void afficheSelectEtoileAdmin() {
 		System.out.println("TODO");
 
 	}

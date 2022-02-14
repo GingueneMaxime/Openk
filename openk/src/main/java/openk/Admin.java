@@ -4,7 +4,7 @@ public class Admin {
 	private int num_admin;
 	
 	public Admin(int id) {
-		
+		super();
 		this.num_admin=num_admin;
 	}
 	public void setNumero(int numero) {

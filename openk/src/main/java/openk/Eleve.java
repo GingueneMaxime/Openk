@@ -9,14 +9,16 @@ public class Eleve {
 		this.num_eleve = num_eleve;
 	}
 
+	public void setNumero(int numero) {
+		this.num_eleve= numero;
+		
+	}
+
 	public int getNum_eleve() {
 		return num_eleve;
 	}
 
-	public void setNum_eleve(int num_eleve) {
-		this.num_eleve = num_eleve;
-	}
-
+	
 	@Override
 	public String toString() {
 		return "Eleve [num_eleve=" + num_eleve + "]";
