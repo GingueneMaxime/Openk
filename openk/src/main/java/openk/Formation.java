@@ -15,8 +15,8 @@ public class Formation {
 	public int getNum_formation() {
 		return num_formation;
 	}
-	public void setNum_formation(int num_formation) {
-		this.num_formation = num_formation;
+	public void setNumero(int numero) {
+		this.num_formation = numero;
 	}
 	public String getNom() {
 		return nom;
@@ -29,5 +29,6 @@ public class Formation {
 		return "Formation [num_formation=" + num_formation + ", nom=" + nom + ", certif_ou_diplome=" + certif_ou_diplome
 				+ "]";
 	}
+	
 	
 }
