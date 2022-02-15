@@ -16,6 +16,9 @@ public class Promotion {
 		this.date_debut = date_debut;
 		this.date_fin = date_fin;
 	}
+	public Promotion(int id, String num_formation2, String date_debut2, String date_fin2) {
+		// TODO Auto-generated constructor stub
+	}
 	public int getNum_promotion() {
 		return num_promotion;
 	}
