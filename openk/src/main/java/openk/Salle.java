@@ -19,8 +19,8 @@ public class Salle {
 	public int getNum_salle() {
 		return num_salle;
 	}
-	public void setNum_salle(int num_salle) {
-		this.num_salle = num_salle;
+	public void setNumero(int numero) {
+		this.num_salle = numero;
 	}
 	public int getNum_batiment() {
 		return num_batiment;
