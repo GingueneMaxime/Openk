@@ -69,9 +69,22 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 		return succes;
 	}
 	@Override
-	public boolean update(Utilisateur obj) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Utilisateur utilisateur) {
+		boolean succes = true;
+		try {
+			
+			String requete = "UPDATE FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = ?";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setString(1, utilisateur.getNom());
+			pst.setString(2, utilisateur.getPrenom());
+			pst.setString(3, utilisateur.getMail());
+			pst.setInt(4, utilisateur.getTel());
+			pst.executeUpdate();;
+		} catch (SQLException e) {
+			succes=false;
+			e.printStackTrace();
+		}
+		return succes;
 	}
 
 	@Override
