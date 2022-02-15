@@ -10,8 +10,9 @@ import openk.Seance;
 
 public class SeanceDAO extends DAO<Seance>{
 
-	private static final String TABLE = "num_seance";
-	private static final String CLE_PRIMAIRE = "num_cours";
+	private static final String TABLE = "Seance";
+	private static final String CLE_PRIMAIRE = "num_seance";
+	private static final String NUM_COURS = "num_cours";
 	private static final String NUM_SALLE = "num_salle";
 	private static final String DATE_DEBUT= "date_debut";
 	private static final String DATE_FIN= "date_fin";
@@ -30,11 +31,12 @@ public class SeanceDAO extends DAO<Seance>{
 	public boolean create(Seance seance) {
 		boolean succes=true;
 		try {
-			String requete = "INSERT INTO "+TABLE+" ("+NUM_SALLE+", "+DATE_DEBUT+","+DATE_FIN+") VALUES (?, ?,?)";
+			String requete = "INSERT INTO "+TABLE+" ("+NUM_COURS+"+"+NUM_SALLE+", "+DATE_DEBUT+","+DATE_FIN+") VALUES (?, ?,?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
-			pst.setInt(1, seance.getNum_salle());
-			pst.setObject(2, seance.getDate_debut());
-			pst.setObject(3, seance.getDate_fin());
+			pst.setInt(1, seance.getNum_cours());
+			pst.setInt(2, seance.getNum_salle());
+			pst.setObject(3, seance.getDate_debut());
+			pst.setObject(4, seance.getDate_fin());
 			pst.executeUpdate();
 			//Récupérer la clé qui a été générée et la pousser dans l'objet initial
 			ResultSet rs = pst.getGeneratedKeys();
@@ -85,10 +87,11 @@ public class SeanceDAO extends DAO<Seance>{
 				String requete = "SELECT * FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = "+id;
 				ResultSet rs = Connexion.executeQuery(requete);
 				rs.next();
+				String num_cours = rs.getString(NUM_COURS);
 				String num_salle = rs.getString(NUM_SALLE);
 				String date_debut = rs.getString(DATE_DEBUT);
 				String date_fin=rs.getString(DATE_FIN);
-				seance = new Seance (id, num_salle, date_debut,date_fin);
+				seance = new Seance (id,num_cours, num_salle, date_debut,date_fin);
 				//donnees.put(id, promotion);
 			} catch (SQLException e) {
 				//e.printStackTrace();
