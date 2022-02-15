@@ -18,6 +18,9 @@ public class Seance {
 		this.date_debut = date_debut;
 		this.date_fin = date_fin;
 	}
+	public Seance(int id, String num_salle2, String date_debut2, String date_fin2) {
+		// TODO Auto-generated constructor stub
+	}
 	public int getNum_seance() {
 		return num_seance;
 	}
