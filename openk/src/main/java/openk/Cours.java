@@ -20,6 +20,10 @@ public class Cours {
 		this.date_debut = date_debut;
 		this.date_fin = date_fin;
 	}
+	public Cours(int id, String num_prof2, String num_matiere2, String num_promotion2, String date_debut2,
+			String date_fin2) {
+		// TODO Auto-generated constructor stub
+	}
 	public int getNum_cours() {
 		return num_cours;
 	}
