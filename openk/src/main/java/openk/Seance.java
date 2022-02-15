@@ -10,17 +10,17 @@ public class Seance {
 	private LocalDateTime date_debut;
 	private LocalDateTime date_fin;
 	
-	public Seance(int num_seance, int num_cours, int num_salle, LocalDateTime date_debut, LocalDateTime date_fin) {
+	
+	public Seance(int num_seance, String num_cours2, String num_salle2, String date_debut2, String date_fin2) {
 		super();
 		this.num_seance = num_seance;
-		this.num_cours = num_cours;
-		this.num_salle = num_salle;
-		this.date_debut = date_debut;
-		this.date_fin = date_fin;
+		this.num_cours = num_cours2;
+		this.num_salle = num_salle2;
+		this.date_debut = date_debut2;
+		this.date_fin = date_fin2;
 	}
-	public Seance(int id, String num_salle2, String date_debut2, String date_fin2) {
-		// TODO Auto-generated constructor stub
-	}
+
+
 	public int getNum_seance() {
 		return num_seance;
 	}
