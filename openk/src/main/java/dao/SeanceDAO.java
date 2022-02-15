@@ -3,6 +3,8 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +12,7 @@ import openk.Seance;
 
 public class SeanceDAO extends DAO<Seance>{
 
-	private static final String TABLE = "Seance";
+	private static final String TABLE = "seance";
 	private static final String CLE_PRIMAIRE = "num_seance";
 	private static final String NUM_COURS = "num_cours";
 	private static final String NUM_SALLE = "num_salle";
@@ -31,8 +33,8 @@ public class SeanceDAO extends DAO<Seance>{
 	public boolean create(Seance seance) {
 		boolean succes=true;
 		try {
-			String requete = "INSERT INTO "+TABLE+" ("+NUM_COURS+"+"+NUM_SALLE+", "+DATE_DEBUT+","+DATE_FIN+") VALUES (?, ?,?)";
-			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			String requete = "INSERT INTO "+TABLE+" ("+NUM_COURS+"+"+NUM_SALLE+", "+DATE_DEBUT+","+DATE_FIN+") VALUES (?, ?, ?,?)";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
 			pst.setInt(1, seance.getNum_cours());
 			pst.setInt(2, seance.getNum_salle());
 			pst.setObject(3, seance.getDate_debut());
@@ -87,10 +89,10 @@ public class SeanceDAO extends DAO<Seance>{
 				String requete = "SELECT * FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = "+id;
 				ResultSet rs = Connexion.executeQuery(requete);
 				rs.next();
-				String num_cours = rs.getString(NUM_COURS);
-				String num_salle = rs.getString(NUM_SALLE);
-				String date_debut = rs.getString(DATE_DEBUT);
-				String date_fin=rs.getString(DATE_FIN);
+				int num_cours = rs.getInt(NUM_COURS);
+				int num_salle = rs.getInt(NUM_SALLE);
+				LocalDateTime date_debut = (LocalDateTime) rs.getObject(DATE_DEBUT);
+				LocalDateTime date_fin = (LocalDateTime) rs.getObject(DATE_FIN);
 				seance = new Seance (id,num_cours, num_salle, date_debut,date_fin);
 				//donnees.put(id, promotion);
 			} catch (SQLException e) {
