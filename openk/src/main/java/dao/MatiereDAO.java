@@ -49,7 +49,7 @@ public class MatiereDAO extends DAO<Matiere> {
 	}
 
 	@Override
-	public boolean delete(Matiere Matiere) {
+	public boolean delete(Matiere matiere) {
 		boolean succes = true;
 		try {
 			int id = matiere.getNum_matiere();
@@ -86,7 +86,7 @@ public class MatiereDAO extends DAO<Matiere> {
 				ResultSet rs = Connexion.executeQuery(requete);
 				rs.next();
 				String nom = rs.getString(NOM);
-				matiere = new matiere (id, nom);
+				matiere = new Matiere (id, nom);
 				//donnees.put(id, matiere);
 			} catch (SQLException e) {
 				//e.printStackTrace();

@@ -15,8 +15,8 @@ public class Matiere {
 		return num_matiere;
 	}
 
-	public void setNum_matiere(int num_matiere) {
-		this.num_matiere = num_matiere;
+	public void setNumero(int numero) {
+		this.num_matiere = numero;
 	}
 
 	public String getNom() {
