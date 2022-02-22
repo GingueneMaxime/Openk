@@ -17,7 +17,7 @@ public class Utilisateur {
 	}
 	public Utilisateur(int id, String nom, String prenom, String mail, int tel) {
 		this(nom,prenom,mail,tel);
-		this.numUtilisateur = numUtilisateur;
+		this.numUtilisateur = id;
 		}
 	public String getNom() {
 		return nom;
@@ -50,5 +50,12 @@ public class Utilisateur {
 				prenom + ", mail=" +
 				mail + ", tel=" +
 				tel +"]";
+	}
+	public void setNom(String nom) {
+		this.nom=nom;	
+	}
+	public void setTelephone(int telephone) {
+		this.tel=telephone;
+		
 	}
 }

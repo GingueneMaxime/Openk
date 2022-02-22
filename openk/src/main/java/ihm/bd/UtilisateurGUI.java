@@ -98,10 +98,20 @@ public class UtilisateurGUI extends Application {
         launch(args);
         Connexion.fermer();
     }
+    
 	@Override
 	public void start(Stage premierescene) throws Exception {
+	
+		Utilisateur ut = UtilisateurDAO.getInstance().read(10);
+		System.out.println(ut);
+		ut.setNom("Dupont");
+		ut.setTelephone(0707070707);
+		System.out.println(ut);
+		UtilisateurDAO.getInstance().update(ut);
+		System.out.println("mise à jour terminée");
 		this.fenetrePrincipale = premierescene;
 		this.fenetrePrincipale.setTitle("Utilisateur");
-		initStructureRacineDeLaFenetre();
+		initStructureRacineDeLaFenetre(); 
+		
 	}
 }

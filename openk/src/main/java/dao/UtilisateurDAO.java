@@ -13,7 +13,7 @@ import openk.Utilisateur;
 public class UtilisateurDAO extends DAO<Utilisateur> {
 
 	private static final String TABLE = "Utilisateur";
-	private static final String CLE_PRIMAIRE = "numUtilisateur";
+	private static final String CLE_PRIMAIRE = "num_utilisateur";
 
 	private static final String NOM = "nom";
 	private static final String PRENOM= "prenom";
