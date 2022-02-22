@@ -15,10 +15,10 @@ import openk.Formation;
 public class FormationDAO extends DAO<Formation> {
 
 	private static final String TABLE = "Formation";
-	private static final String CLE_PRIMAIRE = "num_formation";
+	private static final String CLE_PRIMAIRE = "numFormation";
 
 	private static final String NOM = "nom";
-	private static final String CERTIF_OU_DIPLOME = "certif_ou_diplome";
+	private static final String CERTIF_OU_DIPLOME = "certifOuDiplome";
 
 	private static FormationDAO instance=null;
 	public static FormationDAO getInstance(){
@@ -37,7 +37,7 @@ public class FormationDAO extends DAO<Formation> {
 			String requete = "INSERT INTO "+TABLE+" ("+NOM+","+CERTIF_OU_DIPLOME+ ") VALUES (?, ?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
 			pst.setString(1, formation.getNom());
-			pst.setString(2, formation.getCertif_ou_diplome());
+			pst.setString(2, formation.getCertifOuDiplome());
 			pst.executeUpdate();
 			//Récupérer la clé qui a été générée et la pousser dans l'objet initial
 			ResultSet rs = pst.getGeneratedKeys();
@@ -55,7 +55,7 @@ public class FormationDAO extends DAO<Formation> {
 	public boolean delete(Formation formation) {
 		boolean succes = true;
 		try {
-			int id = formation.getNum_formation();
+			int id = formation.getNumFormation();
 			String requete = "DELETE FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setInt(1, id);
@@ -89,8 +89,8 @@ public class FormationDAO extends DAO<Formation> {
 				ResultSet rs = Connexion.executeQuery(requete);
 				rs.next();
 				String nom = rs.getString(NOM);
-				String certif_ou_diplome = rs.getString(CERTIF_OU_DIPLOME);
-				formation = new Formation (id, nom, certif_ou_diplome);
+				String certifOuDiplome = rs.getString(CERTIF_OU_DIPLOME);
+				formation = new Formation (id, nom, certifOuDiplome);
 				//donnees.put(id, formation);
 			} catch (SQLException e) {
 				//e.printStackTrace();

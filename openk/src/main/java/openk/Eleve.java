@@ -2,26 +2,26 @@ package openk;
 
 public class Eleve {
 
-	private int num_eleve;
+	private int numEleve;
 
-	public Eleve(int num_eleve) {
+	public Eleve(int numEleve) {
 		super();
-		this.num_eleve = num_eleve;
+		this.numEleve = numEleve;
 	}
 
 	public void setNumero(int numero) {
-		this.num_eleve= numero;
+		this.numEleve= numero;
 		
 	}
 
-	public int getNum_eleve() {
-		return num_eleve;
+	public int getNumEleve() {
+		return numEleve;
 	}
 
 	
 	@Override
 	public String toString() {
-		return "Eleve [num_eleve=" + num_eleve + "]";
+		return "Eleve [numEleve=" + numEleve + "]";
 	}
 	
 }

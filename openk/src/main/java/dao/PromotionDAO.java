@@ -11,10 +11,10 @@ import openk.Promotion;
 public class PromotionDAO extends DAO<Promotion>{
 
 	private static final String TABLE = "Promotion";
-	private static final String CLE_PRIMAIRE = "num_promotion";
-	private static final String NUM_FORMATION = "num_formation";
-	private static final String DATE_DEBUT= "date_debut";
-	private static final String DATE_FIN= "date_fin";
+	private static final String CLE_PRIMAIRE = "numPromotion";
+	private static final String NUM_FORMATION = "numoFormation";
+	private static final String DATE_DEBUT= "dateDebut";
+	private static final String DATE_FIN= "dateFin";
 
 	private static PromotionDAO instance=null;
 	public static PromotionDAO getInstance(){
@@ -32,14 +32,14 @@ public class PromotionDAO extends DAO<Promotion>{
 		try {
 			String requete = "INSERT INTO "+TABLE+" ("+NUM_FORMATION+", "+DATE_DEBUT+","+DATE_FIN+") VALUES (?, ?,?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
-			pst.setInt(1, promotion.getNum_formation());
-			pst.setObject(2, promotion.getDate_debut());
-			pst.setObject(3, promotion.getDate_fin());
+			pst.setInt(1, promotion.getNumFormation());
+			pst.setObject(2, promotion.getDateDebut());
+			pst.setObject(3, promotion.getDateFin());
 			pst.executeUpdate();
 			//Récupérer la clé qui a été générée et la pousser dans l'objet initial
 			ResultSet rs = pst.getGeneratedKeys();
 			if (rs.next()) {
-				promotion.setNum_promotion(rs.getInt(1));
+				promotion.setNumPromotion(rs.getInt(1));
 			}
 		} catch (SQLException e) {
 			succes=false;
@@ -52,7 +52,7 @@ public class PromotionDAO extends DAO<Promotion>{
 	public boolean delete(Promotion promotion) {
 		boolean succes = true;
 		try {
-			int id = promotion.getNum_promotion();
+			int id = promotion.getNumPromotion();
 			String requete = "DELETE FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setInt(1, id);
@@ -85,10 +85,10 @@ public class PromotionDAO extends DAO<Promotion>{
 				String requete = "SELECT * FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = "+id;
 				ResultSet rs = Connexion.executeQuery(requete);
 				rs.next();
-				String num_formation = rs.getString(NUM_FORMATION);
-				String date_debut = rs.getString(DATE_DEBUT);
-				String date_fin=rs.getString(DATE_FIN);
-				promotion = new Promotion (id, num_formation, date_debut,date_fin);
+				String numFormation = rs.getString(NUM_FORMATION);
+				String dateDebut = rs.getString(DATE_DEBUT);
+				String dateFin=rs.getString(DATE_FIN);
+				promotion = new Promotion (id, numFormation, dateDebut,dateFin);
 				//donnees.put(id, promotion);
 			} catch (SQLException e) {
 				//e.printStackTrace();

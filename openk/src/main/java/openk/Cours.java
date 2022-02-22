@@ -3,52 +3,52 @@ package openk;
 import java.time.LocalDateTime;
 
 public class Cours {
-	private int num_cours;
-	private int num_prof;
-	private int num_matiere;
-	private int num_promotion;
-	private LocalDateTime date_debut;
-	private LocalDateTime date_fin;
+	private int numCours;
+	private int numProf;
+	private int numMatiere;
+	private int numPromotion;
+	private LocalDateTime dateDebut;
+	private LocalDateTime dateFin;
 	
-	public Cours(int num_cours, int num_prof, int num_matiere, int num_promotion, LocalDateTime date_debut,
+	public Cours(int numCours, int numProf, int numMatiere, int numPromotion, LocalDateTime dateDebut,
 			LocalDateTime date_fin) {
 		super();
-		this.num_cours = num_cours;
-		this.num_prof = num_prof;
-		this.num_matiere = num_matiere;
-		this.num_promotion = num_promotion;
-		this.date_debut = date_debut;
-		this.date_fin = date_fin;
+		this.numCours = numCours;
+		this.numProf = numProf;
+		this.numMatiere = numMatiere;
+		this.numPromotion = numPromotion;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
 	}
 	public Cours(int id, String num_prof2, String num_matiere2, String num_promotion2, String date_debut2,
 			String date_fin2) {
 		// TODO Auto-generated constructor stub
 	}
-	public int getNum_cours() {
-		return num_cours;
+	public int getNumCours() {
+		return numCours;
 	}
-	public void setNum_cours(int num_cours) {
-		this.num_cours = num_cours;
+	public void setNumCours(int numCours) {
+		this.numCours = numCours;
 	}
-	public int getNum_prof() {
-		return num_prof;
+	public int getNumProf() {
+		return numProf;
 	}
-	public int getNum_matiere() {
-		return num_matiere;
+	public int getNumMatiere() {
+		return numMatiere;
 	}
-	public int getNum_promotion() {
-		return num_promotion;
+	public int getNumPromotion() {
+		return numPromotion;
 	}
-	public LocalDateTime getDate_debut() {
-		return date_debut;
+	public LocalDateTime getDateDebut() {
+		return dateDebut;
 	}
-	public LocalDateTime getDate_fin() {
-		return date_fin;
+	public LocalDateTime getDateFin() {
+		return dateFin;
 	}
 	@Override
 	public String toString() {
-		return "Cours [num_cours=" + num_cours + ", num_prof=" + num_prof + ", num_matiere=" + num_matiere
-				+ ", num_promotion=" + num_promotion + ", date_debut=" + date_debut + ", date_fin=" + date_fin + "]";
+		return "Cours [numCours=" + numCours + ", numProf=" + numProf + ", numMatiere=" + numMatiere
+				+ ", numPromotion=" + numPromotion + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + "]";
 	}
 	
 	

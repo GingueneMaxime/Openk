@@ -13,7 +13,7 @@ import openk.Matiere;
 public class MatiereDAO extends DAO<Matiere> {
 
 	private static final String TABLE = "Matiere";
-	private static final String CLE_PRIMAIRE = "num_matiere";
+	private static final String CLE_PRIMAIRE = "numMatiere";
 
 	private static final String NOM = "nom";
 	
@@ -52,7 +52,7 @@ public class MatiereDAO extends DAO<Matiere> {
 	public boolean delete(Matiere matiere) {
 		boolean succes = true;
 		try {
-			int id = matiere.getNum_matiere();
+			int id = matiere.getNumMatiere();
 			String requete = "DELETE FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setInt(1, id);

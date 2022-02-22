@@ -2,21 +2,21 @@ package openk;
 
 public class Matiere {
 
-	private int num_matiere;
+	private int numMatiere;
 	private String nom;
 
-	public Matiere(int num_matiere, String nom) {
+	public Matiere(int numMatiere, String nom) {
 		super();
-		this.num_matiere = num_matiere;
+		this.numMatiere = numMatiere;
 		this.nom = nom;
 	}
 
-	public int getNum_matiere() {
-		return num_matiere;
+	public int getNumMatiere() {
+		return numMatiere;
 	}
 
 	public void setNumero(int numero) {
-		this.num_matiere = numero;
+		this.numMatiere = numero;
 	}
 
 	public String getNom() {
@@ -25,7 +25,7 @@ public class Matiere {
 
 	@Override
 	public String toString() {
-		return "Matiere [num_matiere=" + num_matiere + ", nom=" + nom + "]";
+		return "Matiere [num_matiere=" + numMatiere + ", nom=" + nom + "]";
 	}
 	
 }
