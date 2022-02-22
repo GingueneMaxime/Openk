@@ -10,12 +10,12 @@ import openk.Cours;
 public class CoursDAO extends DAO<Cours>{
 
 	private static final String TABLE = "Cours";
-	private static final String CLE_PRIMAIRE = "num_cours";
-	private static final String NUM_PROF = "num_prof";
-	private static final String NUM_MATIERE= "num_matiere";
-	private static final String NUM_PROMOTION= "num_promotion";
-	private static final String DATE_DEBUT= "date_debut";
-	private static final String DATE_FIN= "date_fin";
+	private static final String CLE_PRIMAIRE = "numCours";
+	private static final String NUM_PROF = "numProf";
+	private static final String NUM_MATIERE= "numMatiere";
+	private static final String NUM_PROMOTION= "numPromotion";
+	private static final String DATE_DEBUT= "dateDebut";
+	private static final String DATE_FIN= "dateFin";
 	
 
 	private static CoursDAO instance=null;
@@ -34,16 +34,16 @@ public class CoursDAO extends DAO<Cours>{
 		try {
 			String requete = "INSERT INTO "+TABLE+" ("+NUM_PROF+", "+NUM_MATIERE+", "+NUM_PROMOTION+","+DATE_DEBUT+","+DATE_FIN+") VALUES(?,?, ?,?,?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
-			pst.setInt(1, cours.getNum_prof());
-			pst.setInt(2, cours.getNum_matiere());
-			pst.setInt(3, cours.getNum_promotion());
-			pst.setObject(4, cours.getDate_debut());
-			pst.setObject(5, cours.getDate_fin());
+			pst.setInt(1, cours.getNumProf());
+			pst.setInt(2, cours.getNumMatiere());
+			pst.setInt(3, cours.getNumPromotion());
+			pst.setObject(4, cours.getDateDebut());
+			pst.setObject(5, cours.getDateFin());
 			pst.executeUpdate();
 			//Récupérer la clé qui a été générée et la pousser dans l'objet initial
 			ResultSet rs = pst.getGeneratedKeys();
 			if (rs.next()) {
-				cours.setNum_cours(rs.getInt(1));
+				cours.setNumCours(rs.getInt(1));
 			}
 		} catch (SQLException e) {
 			succes=false;
@@ -56,7 +56,7 @@ public class CoursDAO extends DAO<Cours>{
 	public boolean delete(Cours cours) {
 		boolean succes = true;
 		try {
-			int id = cours.getNum_cours();
+			int id = cours.getNumCours();
 			String requete = "DELETE FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setInt(1, id);
@@ -89,12 +89,12 @@ public class CoursDAO extends DAO<Cours>{
 				String requete = "SELECT * FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = "+id;
 				ResultSet rs = Connexion.executeQuery(requete);
 				rs.next();
-				String num_prof = rs.getString(NUM_PROF);
-				String num_matiere = rs.getString(NUM_MATIERE);
-				String num_promotion = rs.getString(NUM_PROMOTION);
-				String date_debut = rs.getString(DATE_DEBUT);
-				String date_fin = rs.getString(DATE_FIN);
-				cours = new Cours (id, num_prof, num_matiere, num_promotion, date_debut, date_fin);
+				String numProf = rs.getString(NUM_PROF);
+				String numMatiere = rs.getString(NUM_MATIERE);
+				String numPromotion = rs.getString(NUM_PROMOTION);
+				String dateDebut = rs.getString(DATE_DEBUT);
+				String dateFin = rs.getString(DATE_FIN);
+				cours = new Cours (id, numProf, numMatiere, numPromotion, dateDebut, dateFin);
 				//donnees.put(id, utilisateur);
 			} catch (SQLException e) {
 				//e.printStackTrace();

@@ -1,21 +1,21 @@
 package openk;
 
 public class Admin {
-	private int num_admin;
+	private int numAdmin;
 	
 	public Admin(int id) {
 		super();
-		this.num_admin=num_admin;
+		this.numAdmin=numAdmin;
 	}
 	public void setNumero(int numero) {
-		this.num_admin= numero;
+		this.numAdmin= numero;
 		
 	}
-	public int getNum_Admin() {
-		return num_admin;
+	public int getNumAdmin() {
+		return numAdmin;
 	}
 	@Override
 	public String toString() {
-		return "Admin[num_admin=" + num_admin+"]";
+		return "Admin[numAdmin=" + numAdmin+"]";
 	}
 }

@@ -11,7 +11,7 @@ import openk.Batiment;
 public class BatimentDAO extends DAO<Batiment>{
 
 	private static final String TABLE = "Batiment";
-	private static final String CLE_PRIMAIRE = "num_batiment";
+	private static final String CLE_PRIMAIRE = "numBatiment";
 	private static final String NOM = "nom";
 	private static final String ADRESSE= "adresse";
 
@@ -37,7 +37,7 @@ public class BatimentDAO extends DAO<Batiment>{
 			//Récupérer la clé qui a été générée et la pousser dans l'objet initial
 			ResultSet rs = pst.getGeneratedKeys();
 			if (rs.next()) {
-				batiment.setNum_batiment(rs.getInt(1));
+				batiment.setNumBatiment(rs.getInt(1));
 			}
 		} catch (SQLException e) {
 			succes=false;
@@ -50,7 +50,7 @@ public class BatimentDAO extends DAO<Batiment>{
 	public boolean delete(Batiment batiment) {
 		boolean succes = true;
 		try {
-			int id = batiment.getNum_batiment();
+			int id = batiment.getNumBatiment();
 			String requete = "DELETE FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setInt(1, id);

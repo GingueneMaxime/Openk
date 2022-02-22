@@ -13,7 +13,7 @@ import openk.Utilisateur;
 public class UtilisateurDAO extends DAO<Utilisateur> {
 
 	private static final String TABLE = "Utilisateur";
-	private static final String CLE_PRIMAIRE = "num_utilisateur";
+	private static final String CLE_PRIMAIRE = "numUtilisateur";
 
 	private static final String NOM = "nom";
 	private static final String PRENOM= "prenom";
@@ -57,7 +57,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 	public boolean delete(Utilisateur utilisateur) {
 		boolean succes = true;
 		try {
-			int id = utilisateur.getNum_utilisateur();
+			int id = utilisateur.getNumUtilisateur();
 			String requete = "DELETE FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setInt(1, id);
