@@ -11,7 +11,7 @@ import openk.Batiment;
 public class BatimentDAO extends DAO<Batiment>{
 
 	private static final String TABLE = "Batiment";
-	private static final String CLE_PRIMAIRE = "numBatiment";
+	private static final String CLE_PRIMAIRE = "num_batiment";
 	private static final String NOM = "nom";
 	private static final String ADRESSE= "adresse";
 
@@ -37,7 +37,7 @@ public class BatimentDAO extends DAO<Batiment>{
 			//Récupérer la clé qui a été générée et la pousser dans l'objet initial
 			ResultSet rs = pst.getGeneratedKeys();
 			if (rs.next()) {
-				batiment.setNumBatiment(rs.getInt(1));
+				batiment.setNumero(rs.getInt(1));
 			}
 		} catch (SQLException e) {
 			succes=false;
@@ -62,9 +62,21 @@ public class BatimentDAO extends DAO<Batiment>{
 		return succes;
 	}
 	@Override
-	public boolean update(Batiment obj) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Batiment batiment) {
+		boolean succes = true;
+		try {
+			
+			String requete = "UPDATE "+TABLE+" SET "+NOM+" =?, "+ADRESSE+" =?  WHERE "+CLE_PRIMAIRE+" = ?";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setString(1, batiment.getNom());
+			pst.setString(2, batiment.getAdresse());
+			pst.setInt(4, batiment.getNumBatiment());
+			pst.executeUpdate();;
+		} catch (SQLException e) {
+			succes=false;
+			e.printStackTrace();
+		}
+		return succes;
 	}
 
 	@Override

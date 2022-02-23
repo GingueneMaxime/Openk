@@ -11,7 +11,7 @@ public class Cours {
 	private LocalDateTime dateFin;
 	
 	public Cours(int numCours, int numProf, int numMatiere, int numPromotion, LocalDateTime dateDebut,
-			LocalDateTime date_fin) {
+			LocalDateTime dateFin) {
 		super();
 		this.numCours = numCours;
 		this.numProf = numProf;

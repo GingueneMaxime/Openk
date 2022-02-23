@@ -13,7 +13,7 @@ import openk.Matiere;
 public class MatiereDAO extends DAO<Matiere> {
 
 	private static final String TABLE = "Matiere";
-	private static final String CLE_PRIMAIRE = "numMatiere";
+	private static final String CLE_PRIMAIRE = "num_matiere";
 
 	private static final String NOM = "nom";
 	
@@ -64,9 +64,20 @@ public class MatiereDAO extends DAO<Matiere> {
 		return succes;
 	}
 	@Override
-	public boolean update(Matiere obj) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Matiere matiere) {
+		boolean succes = true;
+		try {
+			
+			String requete = "UPDATE "+TABLE+" SET "+NOM+" =?  WHERE "+CLE_PRIMAIRE+" = ?";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setString(1, matiere.getNom());
+			pst.setInt(4, matiere.getNumMatiere());
+			pst.executeUpdate();;
+		} catch (SQLException e) {
+			succes=false;
+			e.printStackTrace();
+		}
+		return succes;
 	}
 
 	@Override

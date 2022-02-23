@@ -16,8 +16,8 @@ public class Batiment {
 		return numBatiment;
 	}
 
-	public void setNumBatiment(int numBatiment) {
-		this.numBatiment = numBatiment;
+	public void setNumero(int numero) {
+		this.numBatiment = numero;
 	}
 
 	public String getNom() {

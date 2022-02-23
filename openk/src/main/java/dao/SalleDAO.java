@@ -17,10 +17,10 @@ public class SalleDAO extends DAO<Salle> {
 	private static final String TABLE = "Salle";
 	private static final String CLE_PRIMAIRE = "num_salle";
 
-	private static final String NUM_BATIMENT = "num_batiment";
+	private static final String NUM_BATIMENT = "numBatiment";
 	private static final String NOM= "nom";
-	private static final String EQUIPEMENT_VIRTUEL= "equipement_virtuel";
-	private static final String NB_PLACES = "nb_places";
+	private static final String EQUIPEMENT_VIRTUEL= "equipementVirtuel";
+	private static final String NB_PLACES = "nbPlaces";
 	
 
 	private static SalleDAO instance=null;
@@ -39,10 +39,10 @@ public class SalleDAO extends DAO<Salle> {
 		try {
 			String requete = "INSERT INTO "+TABLE+" ("+NUM_BATIMENT+", "+NOM+","+EQUIPEMENT_VIRTUEL+","+NB_PLACES+") VALUES (?, ?, ?,?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
-			pst.setInt(1, salle.getNum_batiment());
+			pst.setInt(1, salle.getNumBatiment());
 			pst.setString(2, salle.getNom());
-			pst.setString(3, salle.getEquipement_virtuel());
-			pst.setInt(4, salle.getNb_places());
+			pst.setString(3, salle.getEquipementVirtuel());
+			pst.setInt(4, salle.getNbPlaces());
 			pst.executeUpdate();
 			//Récupérer la clé qui a été générée et la pousser dans l'objet initial
 			ResultSet rs = pst.getGeneratedKeys();
@@ -60,7 +60,7 @@ public class SalleDAO extends DAO<Salle> {
 	public boolean delete(Salle salle) {
 		boolean succes = true;
 		try {
-			int id = salle.getNum_salle();
+			int id = salle.getNumSalle();
 			String requete = "DELETE FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setInt(1, id);
@@ -72,9 +72,23 @@ public class SalleDAO extends DAO<Salle> {
 		return succes;
 	}
 	@Override
-	public boolean update(Salle obj) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Salle salle) {
+		boolean succes = true;
+		try {
+			
+			String requete = "UPDATE "+TABLE+" SET "+NUM_BATIMENT+" =?, "+NOM+" =?,"+EQUIPEMENT_VIRTUEL+" =?, "+NB_PLACES+" =?  WHERE "+CLE_PRIMAIRE+" = ?";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setInt(1, salle.getNumBatiment());
+			pst.setString(2, salle.getNom());
+			pst.setString(3, salle.getEquipementVirtuel());
+			pst.setInt(4, salle.getNbPlaces());
+			pst.setInt(5, salle.getNumSalle());
+			pst.executeUpdate();;
+		} catch (SQLException e) {
+			succes=false;
+			e.printStackTrace();
+		}
+		return succes;
 	}
 
 	@Override
@@ -93,11 +107,11 @@ public class SalleDAO extends DAO<Salle> {
 				String requete = "SELECT * FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = "+id;
 				ResultSet rs = Connexion.executeQuery(requete);
 				rs.next();
-				int num_batiment = rs.getInt(NUM_BATIMENT);
+				int numBatiment = rs.getInt(NUM_BATIMENT);
 				String nom = rs.getString(NOM);
-				String equipement_virtuel = rs.getString(EQUIPEMENT_VIRTUEL);
-				int nb_places = rs.getInt(NB_PLACES);
-				salle = new Salle (id,num_batiment , nom, equipement_virtuel,nb_places );
+				String equipementVirtuel = rs.getString(EQUIPEMENT_VIRTUEL);
+				int nbPlaces = rs.getInt(NB_PLACES);
+				salle = new Salle (id,numBatiment , nom, equipementVirtuel,nbPlaces );
 				//donnees.put(id, salle);
 			} catch (SQLException e) {
 				//e.printStackTrace();

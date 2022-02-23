@@ -5,12 +5,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import openk.Cours;
 
 public class CoursDAO extends DAO<Cours>{
 
 	private static final String TABLE = "Cours";
-	private static final String CLE_PRIMAIRE = "numCours";
+	private static final String CLE_PRIMAIRE = "num_cours";
 	private static final String NUM_PROF = "numProf";
 	private static final String NUM_MATIERE= "numMatiere";
 	private static final String NUM_PROMOTION= "numPromotion";
@@ -68,10 +69,27 @@ public class CoursDAO extends DAO<Cours>{
 		return succes;
 	}
 	@Override
-	public boolean update(Cours obj) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public boolean update(Cours cours) {
+		boolean succes = true;
+		try {
+			
+			String requete = "UPDATE "+TABLE+" SET "+NUM_PROF+" =?, "+NUM_MATIERE+" =?,"+NUM_PROMOTION+" =?,"+DATE_DEBUT+" =? "+DATE_FIN+" =? WHERE "+CLE_PRIMAIRE+" = ?";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setInt(1, cours.getNumProf());
+			pst.setInt(2, cours.getNumMatiere());
+			pst.setInt(3, cours.getNumPromotion());
+			pst.setObject(4, cours.getDateDebut());
+			pst.setObject(5, cours.getDateFin());
+			pst.setInt(6, cours.getNumCours());
+			pst.executeUpdate();;
+		} catch (SQLException e) {
+			succes=false;
+			e.printStackTrace();}
+			
+		return succes;
+		
+		}
+		
 
 	@Override
 	public Cours read(int id) {

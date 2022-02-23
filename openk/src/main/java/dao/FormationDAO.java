@@ -15,7 +15,7 @@ import openk.Formation;
 public class FormationDAO extends DAO<Formation> {
 
 	private static final String TABLE = "Formation";
-	private static final String CLE_PRIMAIRE = "numFormation";
+	private static final String CLE_PRIMAIRE = "num_formation";
 
 	private static final String NOM = "nom";
 	private static final String CERTIF_OU_DIPLOME = "certifOuDiplome";
@@ -67,9 +67,21 @@ public class FormationDAO extends DAO<Formation> {
 		return succes;
 	}
 	@Override
-	public boolean update(Formation obj) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Formation formation) {
+		boolean succes = true;
+		try {
+			
+			String requete = "UPDATE "+TABLE+" SET "+NOM+" =?, "+CERTIF_OU_DIPLOME+" =? WHERE "+CLE_PRIMAIRE+" = ?";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setString(1, formation.getNom());
+			pst.setString(2, formation.getCertifOuDiplome());
+			pst.setInt(4, formation.getNumFormation());
+			pst.executeUpdate();;
+		} catch (SQLException e) {
+			succes=false;
+			e.printStackTrace();
+		}
+		return succes;
 	}
 
 	@Override

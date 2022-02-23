@@ -5,7 +5,7 @@ public class Admin {
 	
 	public Admin(int id) {
 		super();
-		this.numAdmin=numAdmin;
+		this.numAdmin=id;
 	}
 	public void setNumero(int numero) {
 		this.numAdmin= numero;

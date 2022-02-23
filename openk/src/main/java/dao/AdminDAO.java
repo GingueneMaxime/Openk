@@ -14,7 +14,7 @@ import openk.Admin;
 public class AdminDAO extends DAO<Admin> {
 
 	private static final String TABLE = "Admin";
-	private static final String CLE_PRIMAIRE = "numAdmin";
+	private static final String CLE_PRIMAIRE = "num_admin";
 
 	
 

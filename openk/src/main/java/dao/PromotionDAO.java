@@ -11,8 +11,8 @@ import openk.Promotion;
 public class PromotionDAO extends DAO<Promotion>{
 
 	private static final String TABLE = "Promotion";
-	private static final String CLE_PRIMAIRE = "numPromotion";
-	private static final String NUM_FORMATION = "numoFormation";
+	private static final String CLE_PRIMAIRE = "num_promotion";
+	private static final String NUM_FORMATION = "numFormation";
 	private static final String DATE_DEBUT= "dateDebut";
 	private static final String DATE_FIN= "dateFin";
 
@@ -64,9 +64,22 @@ public class PromotionDAO extends DAO<Promotion>{
 		return succes;
 	}
 	@Override
-	public boolean update(Promotion obj) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Promotion promotion) {
+		boolean succes = true;
+		try {
+			
+			String requete = "UPDATE "+TABLE+" SET "+NUM_FORMATION+" =?, "+DATE_DEBUT+" =?,"+DATE_FIN+" =?  WHERE "+CLE_PRIMAIRE+" = ?";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setInt(1, promotion.getNumFormation());
+			pst.setObject(2, promotion.getDateDebut());
+			pst.setObject(3, promotion.getDateFin());
+			pst.setInt(4, promotion.getNumPromotion());
+			pst.executeUpdate();;
+		} catch (SQLException e) {
+			succes=false;
+			e.printStackTrace();
+		}
+		return succes;
 	}
 
 	@Override

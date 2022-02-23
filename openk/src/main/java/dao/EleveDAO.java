@@ -14,7 +14,7 @@ import openk.Eleve;
 public class EleveDAO extends DAO<Eleve> {
 
 	private static final String TABLE = "Eleve";
-	private static final String CLE_PRIMAIRE = "numEleve";
+	private static final String CLE_PRIMAIRE = "num_eleve";
 
 	
 

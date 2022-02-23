@@ -11,10 +11,10 @@ public class Seance {
 	private LocalDateTime dateFin;
 	
 	
-	public Seance(int numSeance, int numCour, int numSalle, LocalDateTime dateDebut, LocalDateTime dateFin) {
+	public Seance(int numSeance, int numCours, int numSalle, LocalDateTime dateDebut, LocalDateTime dateFin) {
 		super();
 		this.numSeance = numSeance;
-		this.numCours = numCour;
+		this.numCours = numCours;
 		this.numSalle = numSalle;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;

@@ -4,9 +4,9 @@ public class Eleve {
 
 	private int numEleve;
 
-	public Eleve(int numEleve) {
+	public Eleve(int id) {
 		super();
-		this.numEleve = numEleve;
+		this.numEleve = id;
 	}
 
 	public void setNumero(int numero) {

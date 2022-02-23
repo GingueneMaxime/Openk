@@ -13,7 +13,7 @@ import openk.Seance;
 public class SeanceDAO extends DAO<Seance>{
 
 	private static final String TABLE = "Seance";
-	private static final String CLE_PRIMAIRE = "numSeance";
+	private static final String CLE_PRIMAIRE = "num_seance";
 	private static final String NUM_COURS = "numCours";
 	private static final String NUM_SALLE = "numSalle";
 	private static final String DATE_DEBUT= "dateDebut";
@@ -68,9 +68,23 @@ public class SeanceDAO extends DAO<Seance>{
 		return succes;
 	}
 	@Override
-	public boolean update(Seance obj) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Seance seance) {
+		boolean succes = true;
+		try {
+			
+			String requete = "UPDATE "+TABLE+" SET "+NUM_COURS+" =?, "+NUM_SALLE+" =?,"+DATE_DEBUT+" =?, "+DATE_FIN+" =?  WHERE "+CLE_PRIMAIRE+" = ?";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setInt(1, seance.getNumCours());
+			pst.setInt(2, seance.getNumSalle());
+			pst.setObject(3, seance.getDateDebut());
+			pst.setObject(4, seance.getDateFin());
+			pst.setInt(5, seance.getNumSeance());
+			pst.executeUpdate();;
+		} catch (SQLException e) {
+			succes=false;
+			e.printStackTrace();
+		}
+		return succes;
 	}
 
 	@Override
