@@ -54,7 +54,7 @@ public class Utilisateur {
 				+ ", nom=" + nom + ", prenom=" +
 				prenom + ", mail=" +
 				mail + ", tel=" +
-				tel +"]";
+				tel +", motDePasse="+ motDePasse+"]";
 	}
 	public void setNom(String nom) {
 		this.nom=nom;	
