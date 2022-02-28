@@ -11,6 +11,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import openk.Utilisateur;
@@ -41,16 +44,26 @@ public class UtilisateurGUI extends Application {
  	@Override
  	public void start(Stage premierescene) throws Exception {
  	
+ 		/*TableView<Utilisateur> table = new TableView<Utilisateur>();
+ 		TableColumn<Utilisateur, String>Type //
+        = new TableColumn<Utilisateur, String>("Type");
+ 		TableColumn<Utilisateur, String>Nom //
+        = new TableColumn<Utilisateur, String>("Nom");
+ 		TableColumn<Utilisateur, Boolean> Active//
+        = new TableColumn<Utilisateur, Boolean>("Active");
+ 		Type.setCellValueFactory(new PropertyValueFactory<>("Type"));
+ 	      Nom.setCellValueFactory(new PropertyValueFactory<>("Nom")); */
  		Utilisateur ut = UtilisateurDAO.getInstance().read(10);
  		System.out.println(ut);
  		ut.setNom("Dupont");
- 		ut.setTelephone("0707070707");
+ 		ut.setTelephone("0607070707");
  		System.out.println(ut);
  		UtilisateurDAO.getInstance().update(ut);
  		System.out.println("mise à jour terminée");
  		this.fenetrePrincipale = premierescene;
  		this.fenetrePrincipale.setTitle("Utilisateur");
  		initStructureRacineDeLaFenetre();
+ 		//montrerLesUtilisateurs();
  		
  	}
     public void initStructureRacineDeLaFenetre() {
@@ -74,7 +87,7 @@ public class UtilisateurGUI extends Application {
             e.printStackTrace();
         }
     }
-   /* public void montrerLesUtilisateurs() {
+    public void montrerLesUtilisateurs() {
         try {
             // On associe à l'autre vue de la liste 
             FXMLLoader loader = new FXMLLoader();
@@ -86,7 +99,7 @@ public class UtilisateurGUI extends Application {
             
             
             // Place cette sous-fenêtre au milieu de la fenêtre principale
-            structureRacineDeLaFenetre.setCenter(lesUtilisateurs);
+            //structureRacineDeLaFenetre.setCenter(lesUtilisateurs);
                         
             // récupère le contrôleur de la sous-fenêtre 
             this.sousControleur = loader.getController();
@@ -97,7 +110,7 @@ public class UtilisateurGUI extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
     
     public Stage getFenetrePrincipale() {
  		return fenetrePrincipale;
@@ -111,6 +124,7 @@ public class UtilisateurGUI extends Application {
 		}
 		return utilisateurData;
 	}
+    
     public static void main(String[] args) {
         launch(args);
         Connexion.fermer();

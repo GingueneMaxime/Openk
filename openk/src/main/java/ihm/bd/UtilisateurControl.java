@@ -1,7 +1,5 @@
 package ihm.bd;
 
-
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
