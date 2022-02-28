@@ -6,17 +6,18 @@ public class Utilisateur {
 	private String prenom;
 	private String mail;
 	private String tel;
+	private String motDePasse;
 	
-	
-	public Utilisateur( String nom, String prenom, String mail, String tel) {
+	public Utilisateur( String nom, String prenom, String mail, String tel,String motDePasse) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.mail = mail;
 		this.tel = tel;
+		this.motDePasse=motDePasse;
 	}
-	public Utilisateur(int id, String nom, String prenom, String mail, String tel) {
-		this(nom,prenom,mail,tel);
+	public Utilisateur(int id, String nom, String prenom, String mail, String tel, String motDePasse) {
+		this(nom,prenom,mail,tel,motDePasse);
 		this.numUtilisateur = id;
 		}
 	public String getNom() {
@@ -34,7 +35,10 @@ public class Utilisateur {
 	public String getTel() {
 		return tel;
 	}
-
+	
+	public String getMotDePasse() {
+		return motDePasse;
+	}
 	public void setNumero(int numero) {
 		this.numUtilisateur = numero;
 		
@@ -43,14 +47,7 @@ public class Utilisateur {
 	public int getNumUtilisateur() {
 		return numUtilisateur;
 	}
-	@Override
-	public String toString() {
-		return "Utilisateur [num_utilisateur=" + numUtilisateur
-				+ ", nom=" + nom + ", prenom=" +
-				prenom + ", mail=" +
-				mail + ", tel=" +
-				tel +"]";
-	}
+	
 	public void setNom(String nom) {
 		this.nom=nom;	
 	}
@@ -58,4 +55,11 @@ public class Utilisateur {
 		this.tel=telephone;
 		
 	}
+	
+	@Override
+	public String toString() {
+		return "Utilisateur [numUtilisateur=" + numUtilisateur + ", nom=" + nom + ", prenom=" + prenom + ", mail="
+				+ mail + ", tel=" + tel + ", motDePasse=" + motDePasse + "]";
+	}
+	
 }
