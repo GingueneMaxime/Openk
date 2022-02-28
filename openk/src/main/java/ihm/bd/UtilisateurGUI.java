@@ -13,7 +13,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import openk.Utilisateur;
 
@@ -46,7 +45,7 @@ public class UtilisateurGUI extends Application {
  		Utilisateur ut = UtilisateurDAO.getInstance().read(10);
  		System.out.println(ut);
  		ut.setNom("Dupont");
- 		ut.setTelephone(0707070707);
+ 		ut.setTelephone("0707070707");
  		System.out.println(ut);
  		UtilisateurDAO.getInstance().update(ut);
  		System.out.println("mise à jour terminée");
