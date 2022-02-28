@@ -8,6 +8,8 @@ import dao.UtilisateurDAO;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -22,7 +24,7 @@ public class UtilisateurGUI extends Application {
 	private final int numero;
 	
     private Stage fenetrePrincipale;
-    private BorderPane structureRacineDeLaFenetre;
+    private AnchorPane structureRacineDeLaFenetre;
     
     private ObservableList<Utilisateur> utilisateurData = FXCollections.observableArrayList();
     
@@ -34,10 +36,25 @@ public class UtilisateurGUI extends Application {
     	this.numero=compteur++;
 		System.out.println("cponstructeur " + this.numero);
     }
-    public ObservableList<Utilisateur> getutilisateurData() {
+    public ObservableList<Utilisateur> getUtilisateurData() {
 		return utilisateurData;
 	}
-    
+
+ 	@Override
+ 	public void start(Stage premierescene) throws Exception {
+ 	
+ 		Utilisateur ut = UtilisateurDAO.getInstance().read(10);
+ 		System.out.println(ut);
+ 		ut.setNom("Dupont");
+ 		ut.setTelephone(0707070707);
+ 		System.out.println(ut);
+ 		UtilisateurDAO.getInstance().update(ut);
+ 		System.out.println("mise à jour terminée");
+ 		this.fenetrePrincipale = premierescene;
+ 		this.fenetrePrincipale.setTitle("Utilisateur");
+ 		initStructureRacineDeLaFenetre(); 
+ 		
+ 	}
     public void initStructureRacineDeLaFenetre() {
         try {
             // Fait le lien avec la vue
@@ -49,7 +66,7 @@ public class UtilisateurGUI extends Application {
             // à savoir celle lancée au début du programme et celle qui aurait été générée
             // maintenant
             loader.setController(this);
-            structureRacineDeLaFenetre = (BorderPane) loader.load();
+            structureRacineDeLaFenetre = (AnchorPane) loader.load();
             
             // Affiche la fenêtre principale
             Scene scene = new Scene(structureRacineDeLaFenetre);
@@ -59,11 +76,11 @@ public class UtilisateurGUI extends Application {
             e.printStackTrace();
         }
     }
-    public void montrerLesUtilisateurs() {
+   /* public void montrerLesUtilisateurs() {
         try {
-            // On associe à l'autre vue de la liste d'avions
+            // On associe à l'autre vue de la liste 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(UtilisateurGUI.class.getResource("./bd/Utilisateur.fxml"));
+            loader.setLocation(UtilisateurGUI.class.getResource("Utilisateur.fxml"));
             
             // Ici, nous laissons la vue déclarer sa propre instance de contrôleur,
             // unique, déclarée une seule fois : maintenant
@@ -82,10 +99,12 @@ public class UtilisateurGUI extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
+    
     public Stage getFenetrePrincipale() {
-		return fenetrePrincipale;
-	}
+ 		return fenetrePrincipale;
+ 	}
+    
     public ObservableList<Utilisateur> getUtilisateurDataUtilisateur() {
 		utilisateurData = FXCollections.observableArrayList();
 		List<Utilisateur> lesUtilisateurs = UtilisateurDAO.getInstance().readTable();
@@ -94,14 +113,23 @@ public class UtilisateurGUI extends Application {
 		}
 		return utilisateurData;
 	}
+    
+    @FXML
+	private void handleButtonsListEpaves(ActionEvent event) {
+		System.out.println(this.numero+" -> on a cliqué sur le grand menu épaves / "+this.sousControleur);
+		this.sousControleur.handleButtonsListEpaves(event);
+	}
+
+	@FXML
+	private void handleButtonsListUtilisateur(ActionEvent event) {
+		System.out.println(this.numero+" -> on a cliqué sur le grand menu restore / "+this.sousControleur);
+		this.sousControleur.handleButtonsListUtilisateur(event);
+	}
+	
+
+	
     public static void main(String[] args) {
         launch(args);
         Connexion.fermer();
     }
-	@Override
-	public void start(Stage premierescene) throws Exception {
-		this.fenetrePrincipale = premierescene;
-		this.fenetrePrincipale.setTitle("Utilisateur");
-		initStructureRacineDeLaFenetre();
-	}
 }

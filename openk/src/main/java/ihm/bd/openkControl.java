@@ -3,6 +3,7 @@ package ihm.bd;
 
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -19,7 +20,7 @@ public class openkControl {
 	// La partie droite de la fenêtre, une liste d'avions
 	@FXML
 	private TableView<Utilisateur> utilisateurTable;
-	// pour laquelle on n'affiche que deux informations (identifiant et nom de l'avion)
+	// pour laquelle on n'affiche que deux informations (identifiant et nom des utilisateurs)
 	@FXML
 	private TableColumn<Utilisateur, String> idColonne;
 	@FXML
@@ -30,15 +31,14 @@ public class openkControl {
 	private Label texteTest;
 
 	// Les champs de la partie gauche de la fenêtre qui affichent les détails 
-	// de l'avions actif
 	@FXML
-	private Label id;
+	private Label ID;
 	@FXML
-	private Label prenom;
+	private Label Prénom;
 	@FXML
-	private Label mail;
+	private Label Mail;
 	@FXML
-	private Label tel;
+	private Label Tel;
 
 	// Les références croisées vers l'application principale
 	private UtilisateurGUI mainApp;
@@ -74,26 +74,38 @@ public class openkControl {
 	public void setMainApp(UtilisateurGUI mainApp) {
 		//System.out.println("setMainApp called");
 		this.mainApp = mainApp;
-		utilisateurTable.setItems(this.mainApp.getutilisateurData());
-		afficheAvionSelection();  
+		utilisateurTable.setItems(this.mainApp.getUtilisateurData());
+		afficheUtilisateurSelection();  
 	}
 
 	/**
 	 * Mets à jour la partie gauche de la fenêtre avec les détails de l'avion actif 
 	 */
-	private void afficheAvionSelection() {
+	private void afficheUtilisateurSelection() {
 		Utilisateur projetCourant = utilisateurTable.getItems().get(ligneActive);
-		id.setText(projetCourant.getNum_utilisateur()+"");
+		ID.setText(projetCourant.getNum_utilisateur()+"");
 
-		prenom.setText(projetCourant.getPrenom());
-		mail.setText(projetCourant.getMail());
-		tel.setText(projetCourant.getTel()+"");
+		Prénom.setText(projetCourant.getPrenom());
+		Mail.setText(projetCourant.getMail());
+		Tel.setText(projetCourant.getTel()+"");
 	}
+	@FXML
+	public void handleButtonsListEpaves(ActionEvent event) {
+		utilisateurTable.setItems(this.mainApp.getUtilisateurData());
+		afficheUtilisateurSelection(); 
+	}
+
+	@FXML
+	public void handleButtonsListUtilisateur(ActionEvent event) {
+		utilisateurTable.setItems(this.mainApp.getUtilisateurDataUtilisateur());
+		afficheUtilisateurSelection(); 
+	}
+
 	@FXML
 	private void handleMouseTableViewAction(MouseEvent event) {
 		// permet de récupérer le numéro de la ligne sélectionnées
 		this.setLigneActive(utilisateurTable.getSelectionModel().getSelectedIndex());
-		this.afficheAvionSelection();
+		this.afficheUtilisateurSelection();
 	}
 
 	/**
