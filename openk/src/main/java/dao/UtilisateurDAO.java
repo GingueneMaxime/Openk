@@ -39,7 +39,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 			pst.setString(1, utilisateur.getNom());
 			pst.setString(2, utilisateur.getPrenom());
 			pst.setString(3, utilisateur.getMail());
-			pst.setInt(4, utilisateur.getTel());
+			pst.setString(4, utilisateur.getTel());
 			pst.executeUpdate();
 			//Récupérer la clé qui a été générée et la pousser dans l'objet initial
 			ResultSet rs = pst.getGeneratedKeys();
@@ -78,7 +78,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 			pst.setString(1, utilisateur.getNom());
 			pst.setString(2, utilisateur.getPrenom());
 			pst.setString(3, utilisateur.getMail());
-			pst.setInt(4, utilisateur.getTel());
+			pst.setString(4, utilisateur.getTel());
 			pst.setInt(5, utilisateur.getNumUtilisateur());
 			pst.executeUpdate();;
 		} catch (SQLException e) {
@@ -107,7 +107,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 				String nom = rs.getString(NOM);
 				String prenom = rs.getString(PRENOM);
 				String mail = rs.getString(MAIL);
-				int tel = rs.getInt(TEL);
+				String tel = rs.getString(TEL);
 				utilisateur = new Utilisateur (id, nom, prenom, mail, tel);
 				//donnees.put(id, utilisateur);
 			} catch (SQLException e) {

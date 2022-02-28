@@ -5,17 +5,17 @@ public class Utilisateur {
 	private String nom;
 	private String prenom;
 	private String mail;
-	private int tel;
+	private String tel;
 	
 	
-	public Utilisateur( String nom, String prenom, String mail, int tel) {
+	public Utilisateur( String nom, String prenom, String mail, String tel) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.mail = mail;
 		this.tel = tel;
 	}
-	public Utilisateur(int id, String nom, String prenom, String mail, int tel) {
+	public Utilisateur(int id, String nom, String prenom, String mail, String tel) {
 		this(nom,prenom,mail,tel);
 		this.numUtilisateur = id;
 		}
@@ -31,7 +31,7 @@ public class Utilisateur {
 		return mail;
 	}
 
-	public int getTel() {
+	public String getTel() {
 		return tel;
 	}
 
@@ -54,7 +54,7 @@ public class Utilisateur {
 	public void setNom(String nom) {
 		this.nom=nom;	
 	}
-	public void setTelephone(int telephone) {
+	public void setTelephone(String telephone) {
 		this.tel=telephone;
 		
 	}

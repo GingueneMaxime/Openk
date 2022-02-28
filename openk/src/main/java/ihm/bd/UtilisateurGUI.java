@@ -44,7 +44,7 @@ public class UtilisateurGUI extends Application {
  		Utilisateur ut = UtilisateurDAO.getInstance().read(10);
  		System.out.println(ut);
  		ut.setNom("Dupont");
- 		ut.setTelephone(0707070707);
+ 		ut.setTelephone("0707070707");
  		System.out.println(ut);
  		UtilisateurDAO.getInstance().update(ut);
  		System.out.println("mise à jour terminée");
