@@ -11,7 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import openk.Utilisateur;
 
-public class openkControl {
+public class UtilisateurControl {
 
 
 	// On prépare ici des données dans le programme java, chaque nom utilisé ici sera relié
@@ -25,6 +25,12 @@ public class openkControl {
 	private TableColumn<Utilisateur, String> idColonne;
 	@FXML
 	private TableColumn<Utilisateur, String> nomColonne;
+	@FXML
+	private TableColumn<Utilisateur, String> prenomColonne;
+	@FXML
+	private TableColumn<Utilisateur, String> mailColonne;
+	@FXML
+	private TableColumn<Utilisateur, String> telColonne;
 
 	// un champs qui permet de montrer l'action du bouton
 	@FXML
@@ -49,7 +55,7 @@ public class openkControl {
 	/**
 	 * Le constructeur est appelé juste avant la méthode d'initialisation
 	 */
-	public openkControl() {  	
+	public UtilisateurControl() {  	
 	}
 
 	/**
@@ -62,8 +68,11 @@ public class openkControl {
 		// verrons pas en détail.
 		// Pour faire court : les méthodes sont appliquées pour chaque ligne avec chaque élément de la liste
 		// On passe par des SimpleStringProperty pour conserver nos classes métier sans javaFX
-		idColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNum_utilisateur()+""));
+		idColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNumUtilisateur()+""));
 		nomColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
+		prenomColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
+		mailColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMail()));
+		telColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTel()));
 	}
 
 	/**
@@ -83,7 +92,7 @@ public class openkControl {
 	 */
 	private void afficheUtilisateurSelection() {
 		Utilisateur projetCourant = utilisateurTable.getItems().get(ligneActive);
-		ID.setText(projetCourant.getNum_utilisateur()+"");
+		ID.setText(projetCourant.getNumUtilisateur()+"");
 
 		Prénom.setText(projetCourant.getPrenom());
 		Mail.setText(projetCourant.getMail());

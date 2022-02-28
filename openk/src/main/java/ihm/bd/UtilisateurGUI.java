@@ -2,7 +2,6 @@ package ihm.bd;
 
 import java.io.IOException;
 import java.util.List;
-
 import dao.Connexion;
 import dao.UtilisateurDAO;
 import javafx.application.Application;
@@ -27,7 +26,7 @@ public class UtilisateurGUI extends Application {
     
     private ObservableList<Utilisateur> utilisateurData = FXCollections.observableArrayList();
     
-    private openkControl sousControleur=null;
+    private UtilisateurControl sousControleur=null;
     
     public UtilisateurGUI() {
     	super();
@@ -51,14 +50,14 @@ public class UtilisateurGUI extends Application {
  		System.out.println("mise à jour terminée");
  		this.fenetrePrincipale = premierescene;
  		this.fenetrePrincipale.setTitle("Utilisateur");
- 		initStructureRacineDeLaFenetre(); 
+ 		initStructureRacineDeLaFenetre();
  		
  	}
     public void initStructureRacineDeLaFenetre() {
         try {
             // Fait le lien avec la vue
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(openkControl.class.getResource("Utilisateur.fxml"));
+            loader.setLocation(UtilisateurControl.class.getResource("Utilisateur.fxml"));
             
             // Ici, nous choisissons de gérer par nous même le lien entre
             // le controleur et la vue. Cela évite d'avoir deux instances du contrôleur
@@ -112,21 +111,6 @@ public class UtilisateurGUI extends Application {
 		}
 		return utilisateurData;
 	}
-    
-    @FXML
-	private void handleButtonsListEpaves(ActionEvent event) {
-		System.out.println(this.numero+" -> on a cliqué sur le grand menu épaves / "+this.sousControleur);
-		this.sousControleur.handleButtonsListEpaves(event);
-	}
-
-	@FXML
-	private void handleButtonsListUtilisateur(ActionEvent event) {
-		System.out.println(this.numero+" -> on a cliqué sur le grand menu restore / "+this.sousControleur);
-		this.sousControleur.handleButtonsListUtilisateur(event);
-	}
-	
-
-	
     public static void main(String[] args) {
         launch(args);
         Connexion.fermer();
