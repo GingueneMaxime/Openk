@@ -35,10 +35,11 @@ public class Utilisateur {
 	public String getTel() {
 		return tel;
 	}
-	
-	public String getMotDePasse() {
+
+	public String getmotDePasse() {
 		return motDePasse;
 	}
+
 	public void setNumero(int numero) {
 		this.numUtilisateur = numero;
 		
@@ -47,7 +48,14 @@ public class Utilisateur {
 	public int getNumUtilisateur() {
 		return numUtilisateur;
 	}
-	
+	@Override
+	public String toString() {
+		return "Utilisateur [num_utilisateur=" + numUtilisateur
+				+ ", nom=" + nom + ", prenom=" +
+				prenom + ", mail=" +
+				mail + ", tel=" +
+				tel +", motDePasse="+ motDePasse+"]";
+	}
 	public void setNom(String nom) {
 		this.nom=nom;	
 	}
@@ -55,11 +63,5 @@ public class Utilisateur {
 		this.tel=telephone;
 		
 	}
-	
-	@Override
-	public String toString() {
-		return "Utilisateur [numUtilisateur=" + numUtilisateur + ", nom=" + nom + ", prenom=" + prenom + ", mail="
-				+ mail + ", tel=" + tel + ", motDePasse=" + motDePasse + "]";
-	}
-	
+		
 }
