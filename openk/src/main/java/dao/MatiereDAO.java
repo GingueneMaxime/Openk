@@ -49,10 +49,10 @@ public class MatiereDAO extends DAO<Matiere> {
 	}
 
 	@Override
-	public boolean delete(Matiere Matiere) {
+	public boolean delete(Matiere matiere) {
 		boolean succes = true;
 		try {
-			int id = matiere.getNum_matiere();
+			int id = matiere.getNumMatiere();
 			String requete = "DELETE FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setInt(1, id);
@@ -64,9 +64,20 @@ public class MatiereDAO extends DAO<Matiere> {
 		return succes;
 	}
 	@Override
-	public boolean update(Matiere obj) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Matiere matiere) {
+		boolean succes = true;
+		try {
+			
+			String requete = "UPDATE "+TABLE+" SET "+NOM+" =?  WHERE "+CLE_PRIMAIRE+" = ?";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setString(1, matiere.getNom());
+			pst.setInt(4, matiere.getNumMatiere());
+			pst.executeUpdate();;
+		} catch (SQLException e) {
+			succes=false;
+			e.printStackTrace();
+		}
+		return succes;
 	}
 
 	@Override
@@ -86,7 +97,7 @@ public class MatiereDAO extends DAO<Matiere> {
 				ResultSet rs = Connexion.executeQuery(requete);
 				rs.next();
 				String nom = rs.getString(NOM);
-				matiere = new matiere (id, nom);
+				matiere = new Matiere (id, nom);
 				//donnees.put(id, matiere);
 			} catch (SQLException e) {
 				//e.printStackTrace();

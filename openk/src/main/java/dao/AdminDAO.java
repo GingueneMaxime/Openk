@@ -51,7 +51,7 @@ public class AdminDAO extends DAO<Admin> {
 	public boolean delete(Admin admin) {
 		boolean succes = true;
 		try {
-			int id = admin.getNum_Admin();
+			int id = admin.getNumAdmin();
 			String requete = "DELETE FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setInt(1, id);

@@ -1,11 +1,12 @@
 package openk;
 
 public class Utilisateur {
-	private int num_utilisateur;
+	private int numUtilisateur;
 	private String nom;
 	private String prenom;
 	private String mail;
 	private int tel;
+	
 	
 	public Utilisateur( String nom, String prenom, String mail, int tel) {
 		super();
@@ -16,7 +17,7 @@ public class Utilisateur {
 	}
 	public Utilisateur(int id, String nom, String prenom, String mail, int tel) {
 		this(nom,prenom,mail,tel);
-		this.num_utilisateur = num_utilisateur;
+		this.numUtilisateur = id;
 		}
 	public String getNom() {
 		return nom;
@@ -35,19 +36,26 @@ public class Utilisateur {
 	}
 
 	public void setNumero(int numero) {
-		this.num_utilisateur = numero;
+		this.numUtilisateur = numero;
 		
 	}
 
-	public int getNum_utilisateur() {
-		return num_utilisateur;
+	public int getNumUtilisateur() {
+		return numUtilisateur;
 	}
 	@Override
 	public String toString() {
-		return "Utilisateur [num_utilisateur=" + num_utilisateur
+		return "Utilisateur [num_utilisateur=" + numUtilisateur
 				+ ", nom=" + nom + ", prenom=" +
 				prenom + ", mail=" +
 				mail + ", tel=" +
 				tel +"]";
+	}
+	public void setNom(String nom) {
+		this.nom=nom;	
+	}
+	public void setTelephone(int telephone) {
+		this.tel=telephone;
+		
 	}
 }

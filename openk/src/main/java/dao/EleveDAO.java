@@ -51,7 +51,7 @@ public class EleveDAO extends DAO<Eleve> {
 	public boolean delete(Eleve eleve) {
 		boolean succes = true;
 		try {
-			int id = eleve.getNum_eleve();
+			int id = eleve.getNumEleve();
 			String requete = "DELETE FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setInt(1, id);

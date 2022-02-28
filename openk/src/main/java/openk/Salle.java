@@ -2,42 +2,42 @@ package openk;
 
 public class Salle {
 	
-	private int num_salle;
-	private int num_batiment;
+	private int numSalle;
+	private int numBatiment;
 	private String nom;
-	private String equipement_virtuel;
-	private int nb_places;
+	private String equipementVirtuel;
+	private int nbPlaces;
 	
-	public Salle(int num_salle, int num_batiment, String nom, String equipement_virtuel, int nb_places) {
+	public Salle(int numSalle, int numBatiment, String nom, String equipementVirtuel, int nbPlaces) {
 		super();
-		this.num_salle = num_salle;
-		this.num_batiment = num_batiment;
+		this.numSalle = numSalle;
+		this.numBatiment = numBatiment;
 		this.nom = nom;
-		this.equipement_virtuel = equipement_virtuel;
-		this.nb_places = nb_places;
+		this.equipementVirtuel = equipementVirtuel;
+		this.nbPlaces = nbPlaces;
 	}
-	public int getNum_salle() {
-		return num_salle;
+	public int getNumSalle() {
+		return numSalle;
 	}
-	public void setNum_salle(int num_salle) {
-		this.num_salle = num_salle;
+	public void setNumero(int numero) {
+		this.numSalle = numero;
 	}
-	public int getNum_batiment() {
-		return num_batiment;
+	public int getNumBatiment() {
+		return numBatiment;
 	}
 	public String getNom() {
 		return nom;
 	}
-	public String getEquipement_virtuel() {
-		return equipement_virtuel;
+	public String getEquipementVirtuel() {
+		return equipementVirtuel;
 	}
-	public int getNb_places() {
-		return nb_places;
+	public int getNbPlaces() {
+		return nbPlaces;
 	}
 	@Override
 	public String toString() {
-		return "Salle [num_salle=" + num_salle + ", num_batiment=" + num_batiment + ", nom=" + nom
-				+ ", equipement_virtuel=" + equipement_virtuel + ", nb_places=" + nb_places + "]";
+		return "Salle [num_salle=" + numSalle + ", num_batiment=" + numBatiment + ", nom=" + nom
+				+ ", equipement_virtuel=" + equipementVirtuel + ", nb_places=" + nbPlaces + "]";
 	}
 	
 	

@@ -34,7 +34,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 	public boolean create(Utilisateur utilisateur) {
 		boolean succes=true;
 		try {
-			String requete = "INSERT INTO "+TABLE+" ("+NOM+", "+PRENOM+", "+MAIL+"?"+TEL+") VALUES (?, ?, ?,?)";
+			String requete = "INSERT INTO "+TABLE+" ("+NOM+", "+PRENOM+", "+MAIL+","+TEL+") VALUES (?, ?, ?,?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
 			pst.setString(1, utilisateur.getNom());
 			pst.setString(2, utilisateur.getPrenom());
@@ -57,7 +57,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 	public boolean delete(Utilisateur utilisateur) {
 		boolean succes = true;
 		try {
-			int id = utilisateur.getNum_utilisateur();
+			int id = utilisateur.getNumUtilisateur();
 			String requete = "DELETE FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setInt(1, id);
@@ -69,9 +69,23 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 		return succes;
 	}
 	@Override
-	public boolean update(Utilisateur obj) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Utilisateur utilisateur) {
+		boolean succes = true;
+		try {
+			
+			String requete = "UPDATE "+TABLE+" SET "+NOM+" =?, "+PRENOM+" =?,"+MAIL+" =?, "+TEL+" =?  WHERE "+CLE_PRIMAIRE+" = ?";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setString(1, utilisateur.getNom());
+			pst.setString(2, utilisateur.getPrenom());
+			pst.setString(3, utilisateur.getMail());
+			pst.setInt(4, utilisateur.getTel());
+			pst.setInt(5, utilisateur.getNumUtilisateur());
+			pst.executeUpdate();;
+		} catch (SQLException e) {
+			succes=false;
+			e.printStackTrace();
+		}
+		return succes;
 	}
 
 	@Override

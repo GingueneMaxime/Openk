@@ -4,37 +4,40 @@ import java.time.LocalDateTime;
 
 public class Promotion {
 	
-	private int num_promotion;
-	private int num_formation;
-	private LocalDateTime date_debut;
-	private LocalDateTime date_fin;
+	private int numPromotion;
+	private int numFormation;
+	private LocalDateTime dateDebut;
+	private LocalDateTime dateFin;
 	
-	public Promotion(int num_promotion, int num_formation, LocalDateTime date_debut, LocalDateTime date_fin) {
+	public Promotion(int numPromotion, int numFormation, LocalDateTime dateDebut, LocalDateTime dateFin) {
 		super();
-		this.num_promotion = num_promotion;
-		this.num_formation = num_formation;
-		this.date_debut = date_debut;
-		this.date_fin = date_fin;
+		this.numPromotion = numPromotion;
+		this.numFormation = numFormation;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
 	}
-	public int getNum_promotion() {
-		return num_promotion;
+	public Promotion(int id, String num_formation2, String date_debut2, String date_fin2) {
+		// TODO Auto-generated constructor stub
 	}
-	public void setNum_promotion(int num_promotion) {
-		this.num_promotion = num_promotion;
+	public int getNumPromotion() {
+		return numPromotion;
 	}
-	public int getNum_formation() {
-		return num_formation;
+	public void setNumPromotion(int numPromotion) {
+		this.numPromotion = numPromotion;
 	}
-	public LocalDateTime getDate_debut() {
-		return date_debut;
+	public int getNumFormation() {
+		return numFormation;
 	}
-	public LocalDateTime getDate_fin() {
-		return date_fin;
+	public LocalDateTime getDateDebut() {
+		return dateDebut;
+	}
+	public LocalDateTime getDateFin() {
+		return dateFin;
 	}
 	@Override
 	public String toString() {
-		return "Promotion [num_promotion=" + num_promotion + ", num_formation=" + num_formation + ", date_debut="
-				+ date_debut + ", date_fin=" + date_fin + "]";
+		return "Promotion [numPromotion=" + numPromotion + ", numFormation=" + numFormation + ", dateDebut="
+				+ dateDebut + ", dateFin=" + dateFin + "]";
 	}
 	
 }

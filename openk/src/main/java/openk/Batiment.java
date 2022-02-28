@@ -1,23 +1,23 @@
 package openk;
 
 public class Batiment {
-	private int num_batiment;
+	private int numBatiment;
 	private String nom;
 	private String adresse;
 	
-	public Batiment(int num_batiment, String nom, String adresse) {
+	public Batiment(int numBatiment, String nom, String adresse) {
 		super();
-		this.num_batiment = num_batiment;
+		this.numBatiment = numBatiment;
 		this.nom = nom;
 		this.adresse = adresse;
 	}
 
-	public int getNum_batiment() {
-		return num_batiment;
+	public int getNumBatiment() {
+		return numBatiment;
 	}
 
-	public void setNum_batiment(int num_batiment) {
-		this.num_batiment = num_batiment;
+	public void setNumero(int numero) {
+		this.numBatiment = numero;
 	}
 
 	public String getNom() {
@@ -30,7 +30,7 @@ public class Batiment {
 
 	@Override
 	public String toString() {
-		return "Batiment [num_batiment=" + num_batiment + ", nom=" + nom + ", adresse=" + adresse + "]";
+		return "Batiment [numBatiment=" + numBatiment + ", nom=" + nom + ", adresse=" + adresse + "]";
 	}
 
 	
