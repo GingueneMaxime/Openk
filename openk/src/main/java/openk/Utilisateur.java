@@ -6,17 +6,19 @@ public class Utilisateur {
 	private String prenom;
 	private String mail;
 	private String tel;
+	private String motDePasse;
 	
 	
-	public Utilisateur( String nom, String prenom, String mail, String tel) {
+	public Utilisateur( String nom, String prenom, String mail, String tel,String motDePasse ) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.mail = mail;
 		this.tel = tel;
+		this.motDePasse=motDePasse;
 	}
-	public Utilisateur(int id, String nom, String prenom, String mail, String tel) {
-		this(nom,prenom,mail,tel);
+	public Utilisateur(int id, String nom, String prenom, String mail, String tel, String motDePasse) {
+		this(nom,prenom,mail,tel,motDePasse);
 		this.numUtilisateur = id;
 		}
 	public String getNom() {
@@ -33,6 +35,9 @@ public class Utilisateur {
 
 	public String getTel() {
 		return tel;
+	}
+	public String getmotDePasse() {
+		return motDePasse;
 	}
 
 	public void setNumero(int numero) {

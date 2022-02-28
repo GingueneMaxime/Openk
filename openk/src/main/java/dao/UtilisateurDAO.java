@@ -19,6 +19,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 	private static final String PRENOM= "prenom";
 	private static final String MAIL = "mail";
 	private static final String TEL = "tel";
+	private static final String MOT_DE_PASSE = "motDePasse";
 
 	private static UtilisateurDAO instance=null;
 	public static UtilisateurDAO getInstance(){
@@ -34,12 +35,13 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 	public boolean create(Utilisateur utilisateur) {
 		boolean succes=true;
 		try {
-			String requete = "INSERT INTO "+TABLE+" ("+NOM+", "+PRENOM+", "+MAIL+","+TEL+") VALUES (?, ?, ?,?)";
+			String requete = "INSERT INTO "+TABLE+" ("+NOM+", "+PRENOM+", "+MAIL+","+TEL+","+MOT_DE_PASSE+") VALUES (?, ?, ?,?,?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
 			pst.setString(1, utilisateur.getNom());
 			pst.setString(2, utilisateur.getPrenom());
 			pst.setString(3, utilisateur.getMail());
 			pst.setString(4, utilisateur.getTel());
+			pst.setString(5, utilisateur.getmotDePasse());
 			pst.executeUpdate();
 			//Récupérer la clé qui a été générée et la pousser dans l'objet initial
 			ResultSet rs = pst.getGeneratedKeys();
@@ -73,13 +75,14 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 		boolean succes = true;
 		try {
 			
-			String requete = "UPDATE "+TABLE+" SET "+NOM+" =?, "+PRENOM+" =?,"+MAIL+" =?, "+TEL+" =?  WHERE "+CLE_PRIMAIRE+" = ?";
+			String requete = "UPDATE "+TABLE+" SET "+NOM+" =?, "+PRENOM+" =?,"+MAIL+" =?, "+TEL+" =?,"+MOT_DE_PASSE+" =?  WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setString(1, utilisateur.getNom());
 			pst.setString(2, utilisateur.getPrenom());
 			pst.setString(3, utilisateur.getMail());
 			pst.setString(4, utilisateur.getTel());
-			pst.setInt(5, utilisateur.getNumUtilisateur());
+			pst.setString(5, utilisateur.getmotDePasse());
+			pst.setInt(6, utilisateur.getNumUtilisateur());
 			pst.executeUpdate();;
 		} catch (SQLException e) {
 			succes=false;
@@ -108,7 +111,8 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 				String prenom = rs.getString(PRENOM);
 				String mail = rs.getString(MAIL);
 				String tel = rs.getString(TEL);
-				utilisateur = new Utilisateur (id, nom, prenom, mail, tel);
+				String motDePasse = rs.getString(MOT_DE_PASSE);
+				utilisateur = new Utilisateur (id, nom, prenom, mail, tel, motDePasse);
 				//donnees.put(id, utilisateur);
 			} catch (SQLException e) {
 				//e.printStackTrace();
