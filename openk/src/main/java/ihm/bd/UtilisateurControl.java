@@ -25,6 +25,12 @@ public class UtilisateurControl {
 	private TableColumn<Utilisateur, String> idColonne;
 	@FXML
 	private TableColumn<Utilisateur, String> nomColonne;
+	@FXML
+	private TableColumn<Utilisateur, String> prenomColonne;
+	@FXML
+	private TableColumn<Utilisateur, String> mailColonne;
+	@FXML
+	private TableColumn<Utilisateur, String> telColonne;
 
 	// un champs qui permet de montrer l'action du bouton
 	@FXML
@@ -64,6 +70,9 @@ public class UtilisateurControl {
 		// On passe par des SimpleStringProperty pour conserver nos classes métier sans javaFX
 		idColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNumUtilisateur()+""));
 		nomColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
+		prenomColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
+		mailColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMail()));
+		telColonne.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTel()));
 	}
 
 	/**
