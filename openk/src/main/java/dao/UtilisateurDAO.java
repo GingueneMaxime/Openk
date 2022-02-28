@@ -19,6 +19,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 	private static final String PRENOM= "prenom";
 	private static final String MAIL = "mail";
 	private static final String TEL = "tel";
+	private static
 
 	private static UtilisateurDAO instance=null;
 	public static UtilisateurDAO getInstance(){

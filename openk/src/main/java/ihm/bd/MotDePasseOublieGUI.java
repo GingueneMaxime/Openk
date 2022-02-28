@@ -42,7 +42,7 @@ public class MotDePasseOublieGUI extends Application{
  	@Override
  	public void start(Stage premierescene) throws Exception {
  	
- 		Utilisateur ut = UtilisateurDAO.getInstance().read(10);
+ 		MotDePasseOublie ut = UtilisateurDAO.getInstance().read(10);
  		System.out.println(ut);
  		ut.setNom("Dupont");
  		ut.setTelephone("0707070707");
