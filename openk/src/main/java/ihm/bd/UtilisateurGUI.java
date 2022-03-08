@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import openk.Utilisateur;
 
@@ -21,7 +22,7 @@ public class UtilisateurGUI extends Application {
 	private final int numero;
 	
     private Stage fenetrePrincipale;
-    private AnchorPane structureRacineDeLaFenetre;
+    private BorderPane structureRacineDeLaFenetre;
     
     private ObservableList<Utilisateur> utilisateurData = FXCollections.observableArrayList();
     
@@ -68,14 +69,14 @@ public class UtilisateurGUI extends Application {
         try {
             // Fait le lien avec la vue
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(UtilisateurControl.class.getResource("Utilisateur.fxml"));
+            loader.setLocation(UtilisateurControl.class.getResource("UtilisateurFP.fxml"));
             
             // Ici, nous choisissons de gérer par nous même le lien entre
             // le controleur et la vue. Cela évite d'avoir deux instances du contrôleur
             // à savoir celle lancée au début du programme et celle qui aurait été générée
             // maintenant
             loader.setController(this);
-            structureRacineDeLaFenetre = (AnchorPane) loader.load();
+            structureRacineDeLaFenetre = (BorderPane) loader.load();
             
             // Affiche la fenêtre principale
             Scene scene = new Scene(structureRacineDeLaFenetre);
@@ -97,7 +98,7 @@ public class UtilisateurGUI extends Application {
             
             
             // Place cette sous-fenêtre au milieu de la fenêtre principale
-            //structureRacineDeLaFenetre.setCenter(lesUtilisateurs);
+            structureRacineDeLaFenetre.setCenter(lesUtilisateurs);
                         
             // récupère le contrôleur de la sous-fenêtre 
             this.sousControleur = loader.getController();
