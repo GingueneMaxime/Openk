@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
-import openk.Utilisateur;
+import openk.Adresse;
 
 public class UtilisateurControl {
 
@@ -17,18 +17,18 @@ public class UtilisateurControl {
 
 	// La partie droite de la fenêtre, une liste d'avions
 	@FXML
-	private TableView<Utilisateur> utilisateurTable;
+	private TableView<Adresse> utilisateurTable;
 	// pour laquelle on n'affiche que deux informations (identifiant et nom des utilisateurs)
 	@FXML
-	private TableColumn<Utilisateur, String> idColonne;
+	private TableColumn<Adresse, String> idColonne;
 	@FXML
-	private TableColumn<Utilisateur, String> nomColonne;
+	private TableColumn<Adresse, String> nomColonne;
 	@FXML
-	private TableColumn<Utilisateur, String> prenomColonne;
+	private TableColumn<Adresse, String> prenomColonne;
 	@FXML
-	private TableColumn<Utilisateur, String> mailColonne;
+	private TableColumn<Adresse, String> mailColonne;
 	@FXML
-	private TableColumn<Utilisateur, String> telColonne;
+	private TableColumn<Adresse, String> telColonne;
 
 	// un champs qui permet de montrer l'action du bouton
 	@FXML
@@ -89,7 +89,7 @@ public class UtilisateurControl {
 	 * Mets à jour la partie gauche de la fenêtre avec les détails de l'avion actif 
 	 */
 	private void afficheUtilisateurSelection() {
-		Utilisateur projetCourant = utilisateurTable.getItems().get(ligneActive);
+		Adresse projetCourant = utilisateurTable.getItems().get(ligneActive);
 		ID.setText(projetCourant.getNumUtilisateur()+"");
 
 		Prénom.setText(projetCourant.getPrenom());

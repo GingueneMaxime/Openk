@@ -16,7 +16,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import openk.Utilisateur;
+import openk.Adresse;
 
 public class UtilisateurGUI extends Application {
 
@@ -27,7 +27,7 @@ public class UtilisateurGUI extends Application {
     private Stage fenetrePrincipale;
     private AnchorPane structureRacineDeLaFenetre;
     
-    private ObservableList<Utilisateur> utilisateurData = FXCollections.observableArrayList();
+    private ObservableList<Adresse> utilisateurData = FXCollections.observableArrayList();
     
     private UtilisateurControl sousControleur=null;
     
@@ -37,7 +37,7 @@ public class UtilisateurGUI extends Application {
     	this.numero=compteur++;
 		System.out.println("cponstructeur " + this.numero);
     }
-    public ObservableList<Utilisateur> getUtilisateurData() {
+    public ObservableList<Adresse> getUtilisateurData() {
 		return utilisateurData;
 	}
 
@@ -53,7 +53,7 @@ public class UtilisateurGUI extends Application {
         = new TableColumn<Utilisateur, Boolean>("Active");
  		Type.setCellValueFactory(new PropertyValueFactory<>("Type"));
  	      Nom.setCellValueFactory(new PropertyValueFactory<>("Nom")); */
- 		Utilisateur ut = UtilisateurDAO.getInstance().read(10);
+ 		Adresse ut = UtilisateurDAO.getInstance().read(10);
  		System.out.println(ut);
  		ut.setNom("Dupont");
  		ut.setTelephone("0607070707");
@@ -116,10 +116,10 @@ public class UtilisateurGUI extends Application {
  		return fenetrePrincipale;
  	}
     
-    public ObservableList<Utilisateur> getUtilisateurDataUtilisateur() {
+    public ObservableList<Adresse> getUtilisateurDataUtilisateur() {
 		utilisateurData = FXCollections.observableArrayList();
-		List<Utilisateur> lesUtilisateurs = UtilisateurDAO.getInstance().readTable();
-		for (Utilisateur utilisateur : lesUtilisateurs) {
+		List<Adresse> lesUtilisateurs = UtilisateurDAO.getInstance().readTable();
+		for (Adresse utilisateur : lesUtilisateurs) {
 			utilisateurData.add(utilisateur);
 		}
 		return utilisateurData;

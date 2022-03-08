@@ -7,10 +7,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import openk.Utilisateur;
+import openk.Adresse;
 
 
-public class UtilisateurDAO extends DAO<Utilisateur> {
+public class UtilisateurDAO extends DAO<Adresse> {
 
 	private static final String TABLE = "Utilisateur";
 	private static final String CLE_PRIMAIRE = "num_utilisateur";
@@ -32,7 +32,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 		super();
 	}
 	@Override
-	public boolean create(Utilisateur utilisateur) {
+	public boolean create(Adresse utilisateur) {
 		boolean succes=true;
 		try {
 			String requete = "INSERT INTO "+TABLE+" ("+NOM+", "+PRENOM+", "+MAIL+","+TEL+","+MOT_DE_PASSE+") VALUES (?, ?, ?,?,?)";
@@ -56,7 +56,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 	}
 
 	@Override
-	public boolean delete(Utilisateur utilisateur) {
+	public boolean delete(Adresse utilisateur) {
 		boolean succes = true;
 		try {
 			int id = utilisateur.getNumUtilisateur();
@@ -71,7 +71,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 		return succes;
 	}
 	@Override
-	public boolean update(Utilisateur utilisateur) {
+	public boolean update(Adresse utilisateur) {
 		boolean succes = true;
 		try {
 			
@@ -92,8 +92,8 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 	}
 
 	@Override
-	public Utilisateur read(int id) {
-		Utilisateur utilisateur = null;
+	public Adresse read(int id) {
+		Adresse utilisateur = null;
 		/*if (donnees.containsKey(id)) {
 			System.out.println("récupéré");
 			utilisateur=donnees.get(id);
@@ -112,7 +112,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 				String mail = rs.getString(MAIL);
 				String tel = rs.getString(TEL);
 				String motDePasse = rs.getString(MOT_DE_PASSE);
-				utilisateur = new Utilisateur (id, nom, prenom, mail, tel, motDePasse);
+				utilisateur = new Adresse (id, nom, prenom, mail, tel, motDePasse);
 				//donnees.put(id, utilisateur);
 			} catch (SQLException e) {
 				//e.printStackTrace();
@@ -125,9 +125,9 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 		System.out.println("TODO");
 
 	}
-	public List<Utilisateur> readTable() {
-		List<Utilisateur> rep = new ArrayList<Utilisateur>();
-		Utilisateur utilisateur = null;
+	public List<Adresse> readTable() {
+		List<Adresse> rep = new ArrayList<Adresse>();
+		Adresse utilisateur = null;
 		try{
 			String requete = "SELECT "+CLE_PRIMAIRE+" FROM "+TABLE;
 			ResultSet res = Connexion.executeQuery(requete) ;

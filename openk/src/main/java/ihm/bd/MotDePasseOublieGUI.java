@@ -14,7 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import openk.Utilisateur;
+import openk.Adresse;
 
 public class MotDePasseOublieGUI extends Application{
 
@@ -104,10 +104,10 @@ public class MotDePasseOublieGUI extends Application{
  		return fenetrePrincipale;
  	}
     
-    public ObservableList<Utilisateur> getUtilisateurDataUtilisateur() {
+    public ObservableList<Adresse> getUtilisateurDataUtilisateur() {
 		utilisateurData = FXCollections.observableArrayList();
-		List<Utilisateur> lesUtilisateurs = UtilisateurDAO.getInstance().readTable();
-		for (Utilisateur utilisateur : lesUtilisateurs) {
+		List<Adresse> lesUtilisateurs = UtilisateurDAO.getInstance().readTable();
+		for (Adresse utilisateur : lesUtilisateurs) {
 			utilisateurData.add(utilisateur);
 		}
 		return utilisateurData;
