@@ -3,17 +3,20 @@ package ihm.bd;
 import java.io.IOException;
 import java.util.List;
 
+import dao.Connexion;
 import dao.UtilisateurDAO;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import openk.Utilisateur;
+import openk.Adresse;
 
-public class UtilisateurGUI extends Application {
+public class MotDePasseOublieGUI extends Application{
 
 
 	private static int compteur=0;
@@ -22,50 +25,40 @@ public class UtilisateurGUI extends Application {
     private Stage fenetrePrincipale;
     private AnchorPane structureRacineDeLaFenetre;
     
-    private ObservableList<Utilisateur> utilisateurData = FXCollections.observableArrayList();
+    private ObservableList<MotDePasseOublie> motDePasseOublieData = FXCollections.observableArrayList();
     
-    private UtilisateurControl sousControleur=null;
+    private MotDePasseOublieControl sousControleur=null;
     
-    public UtilisateurGUI() {
+    public MotDePasseOublieGUI() {
     	super();
-    	this.utilisateurData = getUtilisateurDataUtilisateur();
+    	this.motDePasseOublieData = getMotDePasseOublieDataMotDePasseOublie();
     	this.numero=compteur++;
 		System.out.println("cponstructeur " + this.numero);
     }
-    public ObservableList<Utilisateur> getUtilisateurData() {
-		return utilisateurData;
+    public ObservableList<MotDePasseOublie> getMotDePasseOublieData() {
+		return motDePasseOublieData;
 	}
 
  	@Override
  	public void start(Stage premierescene) throws Exception {
  	
- 		/*TableView<Utilisateur> table = new TableView<Utilisateur>();
- 		TableColumn<Utilisateur, String>Type //
-        = new TableColumn<Utilisateur, String>("Type");
- 		TableColumn<Utilisateur, String>Nom //
-        = new TableColumn<Utilisateur, String>("Nom");
- 		TableColumn<Utilisateur, Boolean> Active//
-        = new TableColumn<Utilisateur, Boolean>("Active");
- 		Type.setCellValueFactory(new PropertyValueFactory<>("Type"));
- 	      Nom.setCellValueFactory(new PropertyValueFactory<>("Nom")); */
- 		Utilisateur ut = UtilisateurDAO.getInstance().read(10);
+ 		MotDePasseOublie ut = UtilisateurDAO.getInstance().read(10);
  		System.out.println(ut);
  		ut.setNom("Dupont");
- 		ut.setTelephone("0607070707");
+ 		ut.setTelephone("0707070707");
  		System.out.println(ut);
  		UtilisateurDAO.getInstance().update(ut);
  		System.out.println("mise à jour terminée");
  		this.fenetrePrincipale = premierescene;
  		this.fenetrePrincipale.setTitle("Utilisateur");
- 		initStructureRacineDeLaFenetre();
- 		//montrerLesUtilisateurs();
+ 		initStructureRacineDeLaFenetre(); 
  		
  	}
     public void initStructureRacineDeLaFenetre() {
         try {
             // Fait le lien avec la vue
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(UtilisateurControl.class.getResource("Utilisateur.fxml"));
+            loader.setLocation(MotDePasseOublieControl.class.getResource("Utilisateur.fxml"));
             
             // Ici, nous choisissons de gérer par nous même le lien entre
             // le controleur et la vue. Cela évite d'avoir deux instances du contrôleur
@@ -94,7 +87,7 @@ public class UtilisateurGUI extends Application {
             
             
             // Place cette sous-fenêtre au milieu de la fenêtre principale
-            //structureRacineDeLaFenetre.setCenter(lesUtilisateurs);
+            structureRacineDeLaFenetre.setCenter(lesUtilisateurs);
                         
             // récupère le contrôleur de la sous-fenêtre 
             this.sousControleur = loader.getController();
@@ -111,17 +104,32 @@ public class UtilisateurGUI extends Application {
  		return fenetrePrincipale;
  	}
     
-    public ObservableList<Utilisateur> getUtilisateurDataUtilisateur() {
+    public ObservableList<Adresse> getUtilisateurDataUtilisateur() {
 		utilisateurData = FXCollections.observableArrayList();
-		List<Utilisateur> lesUtilisateurs = UtilisateurDAO.getInstance().readTable();
-		for (Utilisateur utilisateur : lesUtilisateurs) {
+		List<Adresse> lesUtilisateurs = UtilisateurDAO.getInstance().readTable();
+		for (Adresse utilisateur : lesUtilisateurs) {
 			utilisateurData.add(utilisateur);
 		}
 		return utilisateurData;
 	}
     
-    /*public static void main(String[] args) {
+    @FXML
+	private void handleButtonsListEpaves(ActionEvent event) {
+		System.out.println(this.numero+" -> on a cliqué sur le grand menu épaves / "+this.sousControleur);
+		this.sousControleur.handleButtonsListEpaves(event);
+	}
+
+	@FXML
+	private void handleButtonsListUtilisateur(ActionEvent event) {
+		System.out.println(this.numero+" -> on a cliqué sur le grand menu restore / "+this.sousControleur);
+		this.sousControleur.handleButtonsListUtilisateur(event);
+	}
+	
+
+	
+    public static void main(String[] args) {
         launch(args);
         Connexion.fermer();
-    }*/
+    }
+
 }
