@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import openk.Adresse;
 import openk.Utilisateur;
 
 
@@ -42,7 +41,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 			pst.setString(2, utilisateur.getPrenom());
 			pst.setString(3, utilisateur.getMail());
 			pst.setString(4, utilisateur.getTel());
-			pst.setString(5, utilisateur.getMotDePasse());
+			pst.setString(5, utilisateur.getmotDePasse());
 			pst.executeUpdate();
 			//Récupérer la clé qui a été générée et la pousser dans l'objet initial
 			ResultSet rs = pst.getGeneratedKeys();
@@ -93,8 +92,8 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 	}
 
 	@Override
-	public Adresse read(int id) {
-		Adresse utilisateur = null;
+	public Utilisateur read(int id) {
+		Utilisateur utilisateur = null;
 		/*if (donnees.containsKey(id)) {
 			System.out.println("récupéré");
 			utilisateur=donnees.get(id);
@@ -113,7 +112,7 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 				String mail = rs.getString(MAIL);
 				String tel = rs.getString(TEL);
 				String motDePasse = rs.getString(MOT_DE_PASSE);
-				utilisateur = new Adresse (id, nom, prenom, mail, tel, motDePasse);
+				utilisateur = new Utilisateur (id, nom, prenom, mail, tel, motDePasse);
 				//donnees.put(id, utilisateur);
 			} catch (SQLException e) {
 				//e.printStackTrace();
@@ -126,9 +125,9 @@ public class UtilisateurDAO extends DAO<Utilisateur> {
 		System.out.println("TODO");
 
 	}
-	public List<Adresse> readTable() {
-		List<Adresse> rep = new ArrayList<Adresse>();
-		Adresse utilisateur = null;
+	public List<Utilisateur> readTable() {
+		List<Utilisateur> rep = new ArrayList<Utilisateur>();
+		Utilisateur utilisateur = null;
 		try{
 			String requete = "SELECT "+CLE_PRIMAIRE+" FROM "+TABLE;
 			ResultSet res = Connexion.executeQuery(requete) ;
