@@ -14,7 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import openk.Adresse;
+import openk.Utilisateur;
 
 public class MotDePasseOublieGUI extends Application{
 
@@ -25,7 +25,7 @@ public class MotDePasseOublieGUI extends Application{
     private Stage fenetrePrincipale;
     private AnchorPane structureRacineDeLaFenetre;
     
-    private ObservableList<MotDePasseOublie> motDePasseOublieData = FXCollections.observableArrayList();
+    private ObservableList<Utilisateur> motDePasseOublieData = FXCollections.observableArrayList();
     
     private MotDePasseOublieControl sousControleur=null;
     
@@ -35,20 +35,13 @@ public class MotDePasseOublieGUI extends Application{
     	this.numero=compteur++;
 		System.out.println("cponstructeur " + this.numero);
     }
-    public ObservableList<MotDePasseOublie> getMotDePasseOublieData() {
+    public ObservableList<Utilisateur> getMotDePasseOublieData() {
 		return motDePasseOublieData;
 	}
 
  	@Override
  	public void start(Stage premierescene) throws Exception {
- 	
- 		MotDePasseOublie ut = UtilisateurDAO.getInstance().read(10);
- 		System.out.println(ut);
- 		ut.setNom("Dupont");
- 		ut.setTelephone("0707070707");
- 		System.out.println(ut);
- 		UtilisateurDAO.getInstance().update(ut);
- 		System.out.println("mise à jour terminée");
+
  		this.fenetrePrincipale = premierescene;
  		this.fenetrePrincipale.setTitle("Utilisateur");
  		initStructureRacineDeLaFenetre(); 
@@ -58,7 +51,7 @@ public class MotDePasseOublieGUI extends Application{
         try {
             // Fait le lien avec la vue
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MotDePasseOublieControl.class.getResource("Utilisateur.fxml"));
+            loader.setLocation(MotDePasseOublieControl.class.getResource("MotDePasseOublie.fxml"));
             
             // Ici, nous choisissons de gérer par nous même le lien entre
             // le controleur et la vue. Cela évite d'avoir deux instances du contrôleur
@@ -104,20 +97,20 @@ public class MotDePasseOublieGUI extends Application{
  		return fenetrePrincipale;
  	}
     
-    public ObservableList<Adresse> getUtilisateurDataUtilisateur() {
-		utilisateurData = FXCollections.observableArrayList();
-		List<Adresse> lesUtilisateurs = UtilisateurDAO.getInstance().readTable();
-		for (Adresse utilisateur : lesUtilisateurs) {
-			utilisateurData.add(utilisateur);
+    public ObservableList<Utilisateur> getMotDePasseOublieDataMotDePasseOublie() {
+    	motDePasseOublieData = FXCollections.observableArrayList();
+		List<Utilisateur> lesUtilisateurs = UtilisateurDAO.getInstance().readTable();
+		for (Utilisateur motDePasse : lesUtilisateurs) {
+			motDePasseOublieData.add(motDePasse);
 		}
-		return utilisateurData;
+		return motDePasseOublieData;
 	}
     
-    @FXML
-	private void handleButtonsListEpaves(ActionEvent event) {
-		System.out.println(this.numero+" -> on a cliqué sur le grand menu épaves / "+this.sousControleur);
-		this.sousControleur.handleButtonsListEpaves(event);
-	}
+//    @FXML
+//	private void handleButtonsListEpaves(ActionEvent event) {
+//		System.out.println(this.numero+" -> on a cliqué sur le grand menu épaves / "+this.sousControleur);
+//		this.sousControleur.handleButtonsListEpaves(event);
+//	}
 
 	@FXML
 	private void handleButtonsListUtilisateur(ActionEvent event) {

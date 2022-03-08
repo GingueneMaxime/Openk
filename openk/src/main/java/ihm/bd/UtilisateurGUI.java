@@ -3,6 +3,7 @@ package ihm.bd;
 import java.io.IOException;
 import java.util.List;
 
+import dao.Connexion;
 import dao.UtilisateurDAO;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -25,6 +26,8 @@ public class UtilisateurGUI extends Application {
     private ObservableList<Utilisateur> utilisateurData = FXCollections.observableArrayList();
     
     private UtilisateurControl sousControleur=null;
+    
+    
     
     public UtilisateurGUI() {
     	super();
@@ -120,8 +123,8 @@ public class UtilisateurGUI extends Application {
 		return utilisateurData;
 	}
     
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         launch(args);
         Connexion.fermer();
-    }*/
+    }
 }
