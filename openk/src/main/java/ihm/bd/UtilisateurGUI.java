@@ -61,7 +61,7 @@ public class UtilisateurGUI extends Application {
  		this.fenetrePrincipale = premierescene;
  		this.fenetrePrincipale.setTitle("Utilisateur");
  		initStructureRacineDeLaFenetre();
- 		//montrerLesUtilisateurs();
+ 		montrerLesUtilisateurs();
  		
  	}
     public void initStructureRacineDeLaFenetre() {
@@ -85,12 +85,12 @@ public class UtilisateurGUI extends Application {
             e.printStackTrace();
         }
     }
-   /* public void montrerLesUtilisateurs() {
+     public void montrerLesUtilisateurs() {
         try {
             // On associe à l'autre vue de la liste 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(UtilisateurGUI.class.getResource("Utilisateur.fxml"));
-            
+            loader.setLocation(UtilisateurGUI.class.getResource("./Utilisateur.fxml"));
+            //System.out.println("loader"+UtilisateurGUI.class.getResource("./Utilisateur.fxml"));
             // Ici, nous laissons la vue déclarer sa propre instance de contrôleur,
             // unique, déclarée une seule fois : maintenant
             AnchorPane lesUtilisateurs = (AnchorPane) loader.load();
@@ -108,7 +108,7 @@ public class UtilisateurGUI extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
     
     public Stage getFenetrePrincipale() {
  		return fenetrePrincipale;
