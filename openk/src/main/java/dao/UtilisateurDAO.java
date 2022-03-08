@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import openk.Adresse;
+import openk.Utilisateur;
 
 
-public class UtilisateurDAO extends DAO<Adresse> {
+public class UtilisateurDAO extends DAO<Utilisateur> {
 
 	private static final String TABLE = "Utilisateur";
 	private static final String CLE_PRIMAIRE = "num_utilisateur";
@@ -32,7 +33,7 @@ public class UtilisateurDAO extends DAO<Adresse> {
 		super();
 	}
 	@Override
-	public boolean create(Adresse utilisateur) {
+	public boolean create(Utilisateur utilisateur) {
 		boolean succes=true;
 		try {
 			String requete = "INSERT INTO "+TABLE+" ("+NOM+", "+PRENOM+", "+MAIL+","+TEL+","+MOT_DE_PASSE+") VALUES (?, ?, ?,?,?)";
@@ -41,7 +42,7 @@ public class UtilisateurDAO extends DAO<Adresse> {
 			pst.setString(2, utilisateur.getPrenom());
 			pst.setString(3, utilisateur.getMail());
 			pst.setString(4, utilisateur.getTel());
-			pst.setString(5, utilisateur.getmotDePasse());
+			pst.setString(5, utilisateur.getMotDePasse());
 			pst.executeUpdate();
 			//Récupérer la clé qui a été générée et la pousser dans l'objet initial
 			ResultSet rs = pst.getGeneratedKeys();
@@ -56,7 +57,7 @@ public class UtilisateurDAO extends DAO<Adresse> {
 	}
 
 	@Override
-	public boolean delete(Adresse utilisateur) {
+	public boolean delete(Utilisateur utilisateur) {
 		boolean succes = true;
 		try {
 			int id = utilisateur.getNumUtilisateur();
@@ -71,7 +72,7 @@ public class UtilisateurDAO extends DAO<Adresse> {
 		return succes;
 	}
 	@Override
-	public boolean update(Adresse utilisateur) {
+	public boolean update(Utilisateur utilisateur) {
 		boolean succes = true;
 		try {
 			
