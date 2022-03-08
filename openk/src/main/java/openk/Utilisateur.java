@@ -36,7 +36,7 @@ public class Utilisateur {
 	public String getTel() {
 		return tel;
 	}
-	public String getmotDePasse() {
+	public String getMotDePasse() {
 		return motDePasse;
 	}
 

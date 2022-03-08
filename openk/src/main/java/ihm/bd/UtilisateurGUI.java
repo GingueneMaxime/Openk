@@ -87,7 +87,7 @@ public class UtilisateurGUI extends Application {
             e.printStackTrace();
         }
     }
-    public void montrerLesUtilisateurs() {
+   /* public void montrerLesUtilisateurs() {
         try {
             // On associe à l'autre vue de la liste 
             FXMLLoader loader = new FXMLLoader();
@@ -110,7 +110,7 @@ public class UtilisateurGUI extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
     
     public Stage getFenetrePrincipale() {
  		return fenetrePrincipale;
@@ -125,8 +125,8 @@ public class UtilisateurGUI extends Application {
 		return utilisateurData;
 	}
     
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         launch(args);
         Connexion.fermer();
-    }
+    }*/
 }
