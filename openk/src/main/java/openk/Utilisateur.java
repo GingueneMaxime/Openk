@@ -42,7 +42,6 @@ public class Utilisateur {
 	}
 
 
-
 	public String getTel() {
 		return tel;
 	}
