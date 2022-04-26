@@ -61,7 +61,9 @@ public class UtilisateurGUI extends Application {
  		System.out.println("mise à jour terminée");
  		this.fenetrePrincipale = premierescene;
  		this.fenetrePrincipale.setTitle("Utilisateur");
+ 		
  		initStructureRacineDeLaFenetre();
+ 		
  		montrerLesUtilisateurs();
  		
  	}
