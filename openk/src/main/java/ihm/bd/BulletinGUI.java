@@ -13,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import openk.Eleve;
-import openk.Utilisateur;
 
 public class BulletinGUI extends Application {
 
