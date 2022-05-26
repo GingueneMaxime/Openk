@@ -70,7 +70,7 @@ public class BatimentDAO extends DAO<Batiment>{
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setString(1, batiment.getNom());
 			pst.setString(2, batiment.getAdresse());
-			pst.setInt(4, batiment.getNumBatiment());
+			pst.setInt(3, batiment.getNumBatiment());
 			pst.executeUpdate();;
 		} catch (SQLException e) {
 			succes=false;

@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import openk.Prof;
 
 
@@ -64,10 +63,21 @@ public class ProfDAO extends DAO<Prof> {
 		return succes;
 	}
 	@Override
-	public boolean update(Prof obj) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Prof prof) {
+		boolean succes = true;
+		try {
+			
+			String requete = "UPDATE "+TABLE+"  WHERE "+CLE_PRIMAIRE+" = ?";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setInt(1, prof.getNumProf());
+			pst.executeUpdate();;
+		} catch (SQLException e) {
+			succes=false;
+			e.printStackTrace();
+		}
+		return succes;
 	}
+
 
 	@Override
 	public Prof read(int id) {

@@ -63,9 +63,19 @@ public class AdminDAO extends DAO<Admin> {
 		return succes;
 	}
 	@Override
-	public boolean update(Admin obj) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Admin admin) {
+		boolean succes = true;
+		try {
+			
+			String requete = "UPDATE "+TABLE+"  WHERE "+CLE_PRIMAIRE+" = ?";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setInt(1, admin.getNumAdmin());
+			pst.executeUpdate();;
+		} catch (SQLException e) {
+			succes=false;
+			e.printStackTrace();
+		}
+		return succes;
 	}
 
 	@Override

@@ -75,7 +75,7 @@ public class FormationDAO extends DAO<Formation> {
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setString(1, formation.getNom());
 			pst.setString(2, formation.getCertifOuDiplome());
-			pst.setInt(4, formation.getNumFormation());
+			pst.setInt(3, formation.getNumFormation());
 			pst.executeUpdate();;
 		} catch (SQLException e) {
 			succes=false;

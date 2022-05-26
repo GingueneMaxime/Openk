@@ -71,7 +71,7 @@ public class MatiereDAO extends DAO<Matiere> {
 			String requete = "UPDATE "+TABLE+" SET "+NOM+" =?  WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setString(1, matiere.getNom());
-			pst.setInt(4, matiere.getNumMatiere());
+			pst.setInt(2, matiere.getNumMatiere());
 			pst.executeUpdate();;
 		} catch (SQLException e) {
 			succes=false;

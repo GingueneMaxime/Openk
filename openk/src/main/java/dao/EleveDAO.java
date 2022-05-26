@@ -16,6 +16,8 @@ public class EleveDAO extends DAO<Eleve> {
 	private static final String TABLE = "Eleve";
 	private static final String CLE_PRIMAIRE = "num_eleve";
 
+	private static final String NUM_MATIERE = "numMatiere";
+	private static final String NOTE= "note";
 	
 
 	private static EleveDAO instance=null;
@@ -32,8 +34,10 @@ public class EleveDAO extends DAO<Eleve> {
 	public boolean create(Eleve eleve) {
 		boolean succes=true;
 		try {
-			String requete = "INSERT INTO "+TABLE;
+			String requete = "INSERT INTO "+TABLE+" ("+NUM_MATIERE+", "+NOTE+") VALUES (?, ?, ?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
+			pst.setInt(1, eleve.getNumMatiere());
+			pst.setInt(2, eleve.getNote());
 			pst.executeUpdate();
 			//Récupérer la clé qui a été générée et la pousser dans l'objet initial
 			ResultSet rs = pst.getGeneratedKeys();
@@ -63,9 +67,21 @@ public class EleveDAO extends DAO<Eleve> {
 		return succes;
 	}
 	@Override
-	public boolean update(Eleve obj) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean update(Eleve eleve) {
+		boolean succes = true;
+		try {
+			
+			String requete = "UPDATE "+TABLE+" SET "+NUM_MATIERE+" =?, "+NOTE+" =?  WHERE "+CLE_PRIMAIRE+" = ?";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setInt(1, eleve.getNumMatiere());
+			pst.setInt(2, eleve.getNote());
+			pst.setInt(3, eleve.getNumEleve());
+			pst.executeUpdate();;
+		} catch (SQLException e) {
+			succes=false;
+			e.printStackTrace();
+		}
+		return succes;
 	}
 
 	@Override
